@@ -31,3 +31,28 @@ body {
     text-wrap: balance;
   }
 }
+
+.btn-shine {
+  padding: 12px 0;
+  padding-right: 7px;
+  background: linear-gradient(to right, #292929 0, #7d7b7b 10%, #292929 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 10s infinite linear;
+  /* animation-delay: 10s; */
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  90% {
+    background-position: 1080px;
+  }
+  100% {
+    background-position: 1080px;
+  }
+}
