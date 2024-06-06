@@ -5,28 +5,16 @@ import React from "react";
 import { PiArrowLeftThin } from "react-icons/pi";
 import { motion, useAnimation } from "framer-motion";
 import Image from "next/image";
+import CardWrapper from "@/components/CardWrapper/CardWrapper";
 
 function page() {
   return (
-    <motion.div
-      className="text-neutral-50 "
-      initial={{ y: 100, opacity: 0 }}
-      animate={{
-        y: 0,
-        opacity: 1,
-        transition: {
-          duration: 0.8,
-          delay: 0.9,
-          type: "spring",
-          stiffness: 200,
-        },
-      }}
-    >
+    <CardWrapper customDelay={0.2} className=" text-neutral-50 ">
       <div className="sticky top-5 ">
         <div className=" ">
           <div className="-mt-6   ">
             <div className="bg-neutral-700/25 backdrop-blur-md h-10  w-full rounded-xl flex items-center gap-x-7 ">
-              <Link href={"/dashboard"}>
+              <Link href={"/gallery"}>
                 <div className="bg-neutral-700/50 h-8 w-8 rounded-full flex items-center justify-center ml-3">
                   <div className="bg-neutral-300 rounded-full h-5 w-5 flex items-center justify-center">
                     <PiArrowLeftThin className="text-black text-lg" />
@@ -183,7 +171,8 @@ function page() {
           </p>
         </div>
       </div>
-    </motion.div>
+    </CardWrapper>
+    // </motion.div>
   );
 }
 

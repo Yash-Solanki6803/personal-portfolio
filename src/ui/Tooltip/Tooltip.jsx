@@ -1,14 +1,12 @@
 "use client";
-
 import React, { useState } from "react";
 import {
   PiInstagramLogoThin,
   PiYoutubeLogoThin,
   PiLinkedinLogoThin,
 } from "react-icons/pi";
-import { SlFeed } from "react-icons/sl";
-import { LuBox } from "react-icons/lu";
-
+import { RiInstagramFill } from "react-icons/ri";
+import { FaYoutube, FaLinkedin } from "react-icons/fa";
 import {
   motion,
   useTransform,
@@ -31,57 +29,45 @@ function TestimonialTooltip() {
 
   // translate the tooltip
   const translateX = useSpring(
-    useTransform(x, [-100, 100], [-50, 50]),
+    useTransform(x, [0, 100], [-50, 50]),
     springConfig
   );
 
   const people = [
     {
       id: 1,
-      name: "Our Feeds",
-      position: "www.feed.com",
-      image: <SlFeed />,
+      name: "Instagram",
+      position: "www.instagram.com",
+      image: <RiInstagramFill className="text-xl" />,
     },
     {
       id: 2,
-      name: "Instagram",
-      position: "www.feed.com",
-      image: <PiInstagramLogoThin />,
+      name: "Youtube",
+      position: "www.youtube.com/joscript",
+      image: <FaYoutube className="text-xl" />,
     },
     {
       id: 3,
-      name: "Instagram",
-      position: "www.instagram.com",
-      image: <LuBox />,
-    },
-    {
-      id: 4,
-      name: "Youtube",
-      position: "www.youtube.com/joscript",
-      image: <PiYoutubeLogoThin />,
-    },
-    {
-      id: 5,
       name: "LinkedIn",
       position: "www.Linkedin.com/joscript",
-      image: <PiLinkedinLogoThin />,
+      image: <FaLinkedin className="text-xl" />,
     },
   ];
 
   return (
     <div
       className="flex flex-row items-center gap-x-9  
-    cursor-pointer
+    cursor-pointer  w-full justify-around
     "
     >
       {people.map((testimonial, idx) => (
         <div
-          className="-mr-4  relative group"
-          key={testimonial.name}
+          className="-mr-4 border relative"
+          key={testimonial.id}
           onMouseEnter={() => setHoveredIndex(testimonial.id)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
-          <AnimatePresence mode="wait">
+          {/* <AnimatePresence mode="wait">
             {hoveredIndex === testimonial.id && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.6 }}
@@ -111,7 +97,7 @@ function TestimonialTooltip() {
                 <div className="text-white text-xs">{testimonial.position}</div>
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
           <p>{testimonial.image}</p>
         </div>
       ))}

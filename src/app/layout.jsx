@@ -10,7 +10,9 @@ const rubik = Rubik({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={"bg-[#171717] " + rubik.className}>{children}</body>
+      <body className="bg-[#171717] overflow-x-hidden px-4 py-16 lg:py-0 ">
+        {children}
+      </body>
     </html>
   );
 }
