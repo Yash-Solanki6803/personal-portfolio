@@ -31,7 +31,7 @@ const gallery = () => {
           <div className="border border-neutral-700 my-5" />
 
           <div className="  bg-[#1C1C1C] rounded-lg text-neutral-400">
-            <Link href={"/gallery/djdj"}>
+            <Link href={"/gallery/blogs/djdj"}>
               <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
                 <div className="  flex items-center gap-x-3">
                   <Image

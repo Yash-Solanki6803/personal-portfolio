@@ -62,12 +62,12 @@ function TestimonialTooltip() {
     >
       {people.map((testimonial, idx) => (
         <div
-          className="-mr-4 border relative"
+          className="-mr-4  relative"
           key={testimonial.id}
           onMouseEnter={() => setHoveredIndex(testimonial.id)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
-          {/* <AnimatePresence mode="wait">
+          <AnimatePresence mode="wait">
             {hoveredIndex === testimonial.id && (
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.6 }}
@@ -97,7 +97,7 @@ function TestimonialTooltip() {
                 <div className="text-white text-xs">{testimonial.position}</div>
               </motion.div>
             )}
-          </AnimatePresence> */}
+          </AnimatePresence>
           <p>{testimonial.image}</p>
         </div>
       ))}
