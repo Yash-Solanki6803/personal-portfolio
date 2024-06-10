@@ -8,7 +8,7 @@ import Image from "next/image";
 const Rightpage = () => {
   return (
     <CardWrapper>
-      <div className=" md:w-60 w-full rounded-2xl h-fit lg:sticky top-5 ">
+      <div className=" lg:w-60 w-full rounded-2xl h-fit lg:sticky top-5 ">
         <div>
           <div className="bg-[#1C1C1C] min-w-min rounded-2xl p-4 border border-neutral-800 h-fit">
             <h2 className="font-RubikBold text-neutral-200">Resume</h2>

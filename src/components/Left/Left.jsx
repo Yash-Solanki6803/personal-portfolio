@@ -6,9 +6,9 @@ const Leftpage = () => {
     <>
       <CardWrapper
         customDelay={0.2}
-        className="hidden md:block bg-[#1C1C1C] rounded-2xl w-full md:w-80 h-fit sticky top-5 "
+        className="hidden lg:block bg-[#1C1C1C] rounded-2xl w-full lg:w-80 h-fit sticky top-5 "
       >
-        <div className=" md:w-80 w-full p-3 border border-neutral-800 rounded-2xl h-full bg-[#1C1C1C]  ">
+        <div className=" lg:w-80 w-full p-3 border border-neutral-800 rounded-2xl h-full bg-[#1C1C1C]  ">
           <ProfileHeroComponent />
           <EmailForm />
           <ProfileBio />
@@ -17,9 +17,9 @@ const Leftpage = () => {
       <Sidebar>
         <CardWrapper
           customDelay={0.2}
-          className="bg-[#1C1C1C] rounded-2xl w-full md:w-80    h-fit top-5 "
+          className=" rounded-2xl w-screen px-10 md:px-24 h-fit top-5 "
         >
-          <div className=" md:w-80 w-full p-3  border border-neutral-800 rounded-2xl h-full bg-[#1C1C1C]  ">
+          <div className=" w-full p-3  border border-neutral-800 rounded-2xl h-full bg-[#1C1C1C]  ">
             <ProfileHeroComponent />
             <EmailForm />
             <ProfileBio />

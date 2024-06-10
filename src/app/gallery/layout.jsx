@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={montserrat.className}>
       <body className="">
         <div className="max-w-[78rem] mx-auto ">
-          <div className=" gap-4 flex md:mt-5  flex-col md:flex-row  ">
+          <div className=" gap-4 flex md:mt-5  flex-col lg:flex-row  ">
             <LeftPanel />
             {children}
             <RightPanel />
