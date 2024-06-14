@@ -21,12 +21,23 @@ export async function authorize(formData) {
 }
 
 export async function createBlog(data) {
-  const { title, content, thumbnail, slug } = data;
+  const { title, content, thumbnailSrc, thumbnailAlt, slug } = data;
   const response = await prisma.blog.create({
     data: {
       title,
       content,
-      thumbnail,
+      thumbnailSrc,
+      thumbnailAlt,
+      slug,
+    },
+  });
+  console.log("response:", response);
+  return response;
+}
+
+export async function getSingleBlog(slug) {
+  const response = await prisma.blog.findUnique({
+    where: {
       slug,
     },
   });

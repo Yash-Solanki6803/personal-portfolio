@@ -78,11 +78,10 @@ function UploadImage() {
             {loading ? <Loader size={5} /> : "Add"}
           </label>
         </button>
-        <p className=" w-72 h-12 flex items-center whitespace-nowrap overflow-x-auto">
+        <p className="w-32 sm:w-60 md:w-32 xl:w-72 h-12 flex items-center whitespace-nowrap overflow-x-auto text-xs">
           {downloadURL || "IMAGE URL fill be shown here"}
         </p>
         <button
-          // disabled={loading || (media && file)}
           className=" hover:text-green-300  transition-all h-full px-4  duration-100 disabled:cursor-not-allowed appearance-none rounded-lg cursor-pointer focus:outline-none flex items-center"
           onClick={() => navigator.clipboard.writeText(downloadURL)}
         >

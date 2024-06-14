@@ -20,5 +20,6 @@ model Blog{
   content String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  thumbnail String
+  thumbnailSrc String
+  thumbnailAlt String
 }

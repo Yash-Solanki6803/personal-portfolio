@@ -6,9 +6,9 @@ const Leftpage = () => {
     <>
       <CardWrapper
         customDelay={0.2}
-        className="hidden lg:block bg-[#1C1C1C] rounded-2xl w-full lg:w-80 h-fit sticky top-5 "
+        className="hidden md:block bg-[#1C1C1C] rounded-2xl w-full md:w-80 h-fit sticky top-5 "
       >
-        <div className=" lg:w-80 w-full p-3 border border-neutral-800 rounded-2xl h-full bg-[#1C1C1C]  ">
+        <div className=" md:w-80 w-full p-3 border border-neutral-800 rounded-2xl h-full bg-[#1C1C1C]  ">
           <ProfileHeroComponent />
           <EmailForm />
           <ProfileBio />

@@ -6,3 +6,37 @@ export function titleToSlug(title) {
     .replace(/\s+/g, "-") // Replace spaces with hyphens
     .replace(/-+/g, "-"); // Replace multiple hyphens with a single hyphen
 }
+
+export function formatDate() {
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+
+  const now = new Date();
+  const dayName = days[now.getDay()];
+  const monthName = months[now.getMonth()];
+  const day = now.getDate();
+  const year = now.getFullYear();
+
+  return `${dayName}, ${monthName} ${day}, ${year}`;
+}
