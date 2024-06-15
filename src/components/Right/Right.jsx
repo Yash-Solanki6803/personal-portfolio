@@ -3,6 +3,7 @@ import { IoGameController } from "react-icons/io5";
 import { Tooltip } from "@/ui";
 import CardWrapper from "../CardWrapper/CardWrapper";
 import Image from "next/image";
+import Link from "next/link";
 // import col_logo from "/collogo.png";
 
 const Rightpage = () => {
@@ -16,9 +17,12 @@ const Rightpage = () => {
               Stop worrying about perfecting <br /> the details, just refer my
               resume <br />
             </p>
-            <button className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-RubikMedium text-neutral-50 hover:bg-green-700 transition-all">
+            <Link
+              href={process.env.NEXT_PUBLIC_RESUME_LINK}
+              className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-RubikMedium text-neutral-50 hover:bg-green-700 transition-all"
+            >
               Download
-            </button>
+            </Link>
 
             <div className="border border-neutral-700 my-5" />
 

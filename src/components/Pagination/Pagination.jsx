@@ -11,7 +11,7 @@ function Pagination({ count }) {
     <div className=" flex justify-between">
       <button
         disabled={page <= 1}
-        className="my-2 "
+        className="my-2 disabled:opacity-50"
         onClick={() => router.push(`?blogpage=${page - 1}`)}
       >
         <div className="bg-neutral-700/50 h-7 w-7 rounded-full flex items-center justify-center ml-3">
