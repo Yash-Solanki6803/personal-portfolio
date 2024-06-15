@@ -60,7 +60,7 @@ function WriteBlog() {
             data.slug = slug;
             console.log("formdata:", data);
             const response = await createBlog(data);
-            alert(response);
+            alert(response.message);
             clearForm();
           }}
         >

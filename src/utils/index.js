@@ -7,7 +7,7 @@ export function titleToSlug(title) {
     .replace(/-+/g, "-"); // Replace multiple hyphens with a single hyphen
 }
 
-export function formatDate() {
+export function formatDate(dateString = "") {
   const days = [
     "Sunday",
     "Monday",
@@ -31,8 +31,12 @@ export function formatDate() {
     "November",
     "December",
   ];
-
-  const now = new Date();
+  let now;
+  if (dateString) {
+    now = new Date(dateString);
+  } else {
+    now = new Date();
+  }
   const dayName = days[now.getDay()];
   const monthName = months[now.getMonth()];
   const day = now.getDate();

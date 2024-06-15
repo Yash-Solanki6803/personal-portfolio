@@ -1,15 +1,17 @@
-// "use client";
 import Link from "next/link";
 import React from "react";
-import { PiCodeThin } from "react-icons/pi";
-// import { motion } from "framer-motion";
+import { PiArrowLeftThin, PiArrowRightThin, PiCodeThin } from "react-icons/pi";
 import Image from "next/image";
 import CardWrapper from "@/components/CardWrapper/CardWrapper";
-
-const gallery = () => {
+import { getAllBlogs } from "@/lib/server-actions";
+import { formatDate } from "@/utils";
+import Pagination from "@/components/Pagination/Pagination";
+const gallery = async ({ searchParams }) => {
+  const { blogpage, projectpage } = searchParams;
+  const { blogs, totalBlogs } = await getAllBlogs(blogpage);
   return (
     <CardWrapper customDelay={0.5} className="w-full lg:w-fit ">
-      <div className="  bg-[#1C1C1C] lg:bg-transparent rounded-2xl ">
+      <div className="bg-[#1C1C1C] lg:bg-transparent rounded-2xl ">
         <div>
           <div className="flex gap-x-6 p-4">
             <PiCodeThin className="text-6xl text-neutral-50" />
@@ -31,65 +33,35 @@ const gallery = () => {
           <div className="border border-neutral-700 my-5" />
 
           <div className="  bg-[#1C1C1C] rounded-lg text-neutral-400">
-            <Link href={"/gallery/blogs/djdj"}>
-              <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-                <div className="  flex items-center gap-x-3">
-                  <Image
-                    width={1000}
-                    height={1000}
-                    className="w-24 h-24 object-cover rounded-md"
-                    src="/pic.jpg"
-                    alt=""
-                  />
-                  <div>
-                    <span className="text-sm">July 22, 2023</span>
-                    <h2 className="text-sm font-RubikMedium">
-                      Smooth Animation with React and Framer Motion
-                    </h2>
-                    <p className="bg-[#282828] w-fit text-neutral-300 rounded-md px-2 h-5 flex items-center justify-center text-[11px] ">
-                      TypeScript
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </Link>
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <Image
-                  height={1000}
-                  width={1000}
-                  className="w-24 h-24 object-cover rounded-md"
-                  src="/game.jpg"
-                  alt=""
-                />
-                <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <Image
-                  height={1000}
-                  width={1000}
-                  className="w-24 h-24 object-cover rounded-md"
-                  src="/scult.jpeg"
-                  alt=""
-                />
-                <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                </div>
-              </div>
-            </div>
+            {blogs &&
+              blogs.map((blog) => {
+                const date = formatDate(blog.createdAt);
+                return (
+                  <Link href={`/gallery/blogs/${blog.slug}`} key={blog.id}>
+                    <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
+                      <div className="  flex items-center gap-x-3">
+                        <Image
+                          width={1000}
+                          height={1000}
+                          className="w-24 h-24 object-cover rounded-md"
+                          src={blog.thumbnailSrc}
+                          alt={blog.thumbnailAlt}
+                        />
+                        <div>
+                          <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1">
+                            {blog.title}
+                          </h2>
+                          <span className="text-xs">{date}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            <Pagination count={totalBlogs} />
           </div>
 
-          {/* without image */}
+          {/* News Section*/}
 
           <div className="mt-6  bg-[#1C1C1C] rounded-lg text-neutral-400">
             <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
@@ -145,57 +117,31 @@ const gallery = () => {
           {/* With image */}
 
           <div className=" mt-6  bg-[#1C1C1C] rounded-lg text-neutral-400">
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <Image
-                  height={1000}
-                  width={1000}
-                  className="w-24 h-24 object-cover rounded-md"
-                  src="/pic.jpg"
-                  alt=""
-                />
-                <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <Image
-                  height={1000}
-                  width={1000}
-                  className="w-24 h-24 object-cover rounded-md"
-                  src="/pic.jpg"
-                  alt=""
-                />
-                <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <Image
-                  height={1000}
-                  width={1000}
-                  className="w-24 h-24 object-cover rounded-md"
-                  src="/pic.jpg"
-                  alt=""
-                />
-                <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                </div>
-              </div>
-            </div>
+            {blogs &&
+              blogs.map((blog) => {
+                const date = formatDate(blog.createdAt);
+                return (
+                  <Link href={`/gallery/blogs/${blog.slug}`} key={blog.id}>
+                    <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
+                      <div className="  flex items-center gap-x-3">
+                        <Image
+                          width={1000}
+                          height={1000}
+                          className="w-24 h-24 object-cover rounded-md"
+                          src={blog.thumbnailSrc}
+                          alt={blog.thumbnailAlt}
+                        />
+                        <div>
+                          <span className="text-sm">{date}</span>
+                          <h2 className="text-sm font-RubikMedium line-clamp-1">
+                            {blog.title}
+                          </h2>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
           </div>
         </div>
       </div>

@@ -31,7 +31,12 @@ export async function createBlog(data) {
       slug,
     },
   });
-  console.log("response:", response);
+  if (response) {
+    return {
+      status: 200,
+      message: "Blog created successfully",
+    };
+  }
   return response;
 }
 
@@ -42,4 +47,18 @@ export async function getSingleBlog(slug) {
     },
   });
   return response;
+}
+
+export async function getAllBlogs(page = 1) {
+  const BLOG_PER_PAGE = 3;
+  const blogs = await prisma.blog.findMany({
+    skip: (page - 1) * BLOG_PER_PAGE,
+    take: BLOG_PER_PAGE,
+  });
+  const totalBlogs = await prisma.blog.count();
+  // const blogs = await prisma.blog.findMany();
+  return {
+    blogs,
+    totalBlogs,
+  };
 }
