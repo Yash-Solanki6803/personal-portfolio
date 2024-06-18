@@ -1,5 +1,5 @@
 "use client";
-import { createBlog } from "@/lib/server-actions";
+// import { createBlog } from "@/lib/server-actions";
 import { titleToSlug } from "@/utils";
 import { useState } from "react";
 import PreviewBlog from "../PreviewBlog/PreviewBlog";
@@ -27,6 +27,28 @@ function WriteBlog() {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const slug = titleToSlug(formData.title);
+    const body = {
+      title: formData["title"],
+      content: formData["content"],
+      thumbnailSrc: formData["thumbnailSrc"],
+      thumbnailAlt: formData["thumbnailAlt"],
+    };
+    body.slug = slug;
+    console.log("body:", body);
+    const response = await fetch("/api/blogs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
   //Handle Preview
   const [preview, setPreview] = useState(false);
   return (
@@ -47,23 +69,7 @@ function WriteBlog() {
       {preview ? (
         <PreviewBlog data={formData} />
       ) : (
-        <form
-          className="flex flex-col w-full h-full gap-4 "
-          action={async (formData) => {
-            const data = {
-              title: formData.get("title"),
-              content: formData.get("content"),
-              thumbnailSrc: formData.get("thumbnailSrc"),
-              thumbnailAlt: formData.get("thumbnailAlt"),
-            };
-            const slug = titleToSlug(data.title);
-            data.slug = slug;
-            console.log("formdata:", data);
-            const response = await createBlog(data);
-            alert(response.message);
-            clearForm();
-          }}
-        >
+        <form className="flex flex-col w-full h-full gap-4 ">
           <input
             className="text-white bg-slate-950 w-full rounded-md px-4 sm:px-10 py-2  focus:outline-none font-light placeholder:font-medium"
             type="text"
@@ -108,7 +114,7 @@ function WriteBlog() {
 
           <button
             className=" mt-6 bg-neutral-700 rounded-md py-4 hover:bg-neutral-800 transition-all duration-150 "
-            type="submit"
+            onClick={handleSubmit}
           >
             Submit
           </button>

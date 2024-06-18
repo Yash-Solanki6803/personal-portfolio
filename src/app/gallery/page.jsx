@@ -1,14 +1,8 @@
-import Link from "next/link";
-import React from "react";
-import { PiArrowLeftThin, PiArrowRightThin, PiCodeThin } from "react-icons/pi";
-import Image from "next/image";
 import CardWrapper from "@/components/CardWrapper/CardWrapper";
-import { getAllBlogs } from "@/lib/server-actions";
-import { formatDate } from "@/utils";
-import Pagination from "@/components/Pagination/Pagination";
+import BlogGallery from "@/components/BlogGallery/BlogGallery";
+import { PiCodeThin } from "react-icons/pi";
 const gallery = async ({ searchParams }) => {
   const { blogpage, projectpage } = searchParams;
-  const { blogs, totalBlogs } = await getAllBlogs(blogpage);
   return (
     <CardWrapper customDelay={0.5} className="w-full lg:w-fit ">
       <div className="bg-[#1C1C1C] lg:bg-transparent rounded-2xl ">
@@ -32,34 +26,7 @@ const gallery = async ({ searchParams }) => {
 
           <div className="border border-neutral-700 my-5" />
 
-          <div className="  bg-[#1C1C1C] rounded-lg text-neutral-400">
-            {blogs &&
-              blogs.map((blog) => {
-                const date = formatDate(blog.createdAt);
-                return (
-                  <Link href={`/gallery/blogs/${blog.slug}`} key={blog.id}>
-                    <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
-                      <div className="  flex items-center gap-x-3">
-                        <Image
-                          width={1000}
-                          height={1000}
-                          className="w-24 h-24 object-cover rounded-md"
-                          src={blog.thumbnailSrc}
-                          alt={blog.thumbnailAlt}
-                        />
-                        <div>
-                          <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1">
-                            {blog.title}
-                          </h2>
-                          <span className="text-xs">{date}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
-            <Pagination count={totalBlogs} />
-          </div>
+          <BlogGallery blogPage={blogpage} />
 
           {/* News Section*/}
 
@@ -114,35 +81,9 @@ const gallery = async ({ searchParams }) => {
           </div>
 
           <div className="border border-neutral-700 my-5" />
-          {/* With image */}
 
-          <div className=" mt-6  bg-[#1C1C1C] rounded-lg text-neutral-400">
-            {blogs &&
-              blogs.map((blog) => {
-                const date = formatDate(blog.createdAt);
-                return (
-                  <Link href={`/gallery/blogs/${blog.slug}`} key={blog.id}>
-                    <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
-                      <div className="  flex items-center gap-x-3">
-                        <Image
-                          width={1000}
-                          height={1000}
-                          className="w-24 h-24 object-cover rounded-md"
-                          src={blog.thumbnailSrc}
-                          alt={blog.thumbnailAlt}
-                        />
-                        <div>
-                          <span className="text-sm">{date}</span>
-                          <h2 className="text-sm font-RubikMedium line-clamp-1">
-                            {blog.title}
-                          </h2>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
-          </div>
+          {/* With image */}
+          <BlogGallery blogPage={blogpage} />
         </div>
       </div>
     </CardWrapper>

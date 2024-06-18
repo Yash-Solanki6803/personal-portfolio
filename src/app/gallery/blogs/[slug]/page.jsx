@@ -8,8 +8,15 @@ import { PiArrowLeftThin } from "react-icons/pi";
 import Image from "next/image";
 import CardWrapper from "@/components/CardWrapper/CardWrapper";
 import AnimatedH1 from "@/ui/AnimatedH1/AnimatedH1";
-import { getSingleBlog } from "@/lib/server-actions";
 import { formatDate } from "@/utils";
+
+const getSingleBlog = async (slug) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_WEB_URL}/api/blogs/${slug}`
+  );
+  const data = res.json();
+  return data;
+};
 
 async function page({ params }) {
   const { slug } = params;
