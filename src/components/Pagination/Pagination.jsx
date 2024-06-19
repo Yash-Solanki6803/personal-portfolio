@@ -21,7 +21,7 @@ function Pagination({ count }) {
         </div>
       </button>
       <button
-        disabled={count < page * 3}
+        disabled={count <= page * 3}
         className="my-2 disabled:opacity-50"
         onClick={() => router.push(`?blogpage=${page + 1}`)}
       >
