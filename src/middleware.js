@@ -1,10 +1,18 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-// This function can be marked `async` if using `await` inside
 export function middleware(request) {
-  //redirect to /gallery instead of about of localhost:3000
-  console.log("Middleware");
-  //   return NextResponse.redirect("http://localhost:3000/gallery");
+  //check for cookie with name 'yash-portfolio-auth'
+  //if cookie is not present then redirect to /authorize
+  const authToken = cookies().get("yash-portfolio-auth")?.value;
+  console.log(authToken);
+  if (authToken === undefined) {
+    return NextResponse.redirect(
+      `${process.env.NEXT_PUBLIC_WEB_URL}/authorize`
+    );
+  } else if (authToken === process.env.AUTH_TOKEN) {
+    console.log("Authorized");
+  }
 }
 
 // See "Matching Paths" below to learn more
