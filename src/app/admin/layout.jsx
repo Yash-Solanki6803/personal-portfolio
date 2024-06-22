@@ -10,12 +10,12 @@ const montserrat = Montserrat({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={montserrat.className}>
-      <body className="px-10 sm:px-32 md:px-24 lg:px-0">
-        <div className="max-w-[78rem] mx-auto">
-          <div className=" gap-4 flex md:mt-5 flex-col md:flex-row justify-center ">
+      <body className="px-10 sm:px-32 md:px-24 lg:px-0 h-screen">
+        <div className="max-w-[78rem] mx-auto h-full md:pt-5 pb-14">
+          <div className=" gap-4 flex  flex-col md:flex-row justify-center h-full ">
             <AdminLeftPanel />
-            <div className="flex gap-4 flex-col w-full lg:flex-row ">
-              <div className=" w-full">{children}</div>
+            <div className="flex gap-4 flex-col w-full lg:flex-row h-full">
+              <div className=" w-full ">{children}</div>
             </div>
           </div>
         </div>

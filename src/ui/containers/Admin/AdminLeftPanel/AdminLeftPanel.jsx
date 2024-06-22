@@ -18,9 +18,9 @@ const Leftpage = () => {
           <Navlink href="/admin/projects">Projects</Navlink>
           <Navlink href="/admin/news">News</Navlink>
           <CustomLineBreak />
-          <Navlink href="/blogs/create">Create Blog</Navlink>
-          <Navlink href="/projects/create">Add Project</Navlink>
-          <Navlink href="/news/create">Publish News Article</Navlink>
+          <Navlink href="/admin/blogs/create">Create Blog</Navlink>
+          <Navlink href="/admin/projects/create">Add Project</Navlink>
+          <Navlink href="/admin/news/create">Publish News Article</Navlink>
         </div>
       </CardWrapper>
       <Sidebar>
@@ -37,9 +37,9 @@ const Leftpage = () => {
             <Navlink href="/admin/projects">Projects</Navlink>
             <Navlink href="/admin/news">News</Navlink>
             <CustomLineBreak />
-            <Navlink href="/blogs/create">Create Blog</Navlink>
-            <Navlink href="/projects/create">Add Project</Navlink>
-            <Navlink href="/news/create">Publish News Article</Navlink>
+            <Navlink href="/admin/blogs/create">Create Blog</Navlink>
+            <Navlink href="/admin/projects/create">Add Project</Navlink>
+            <Navlink href="/admin/news/create">Publish News Article</Navlink>
           </div>
         </CardWrapper>
       </Sidebar>

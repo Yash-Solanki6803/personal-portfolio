@@ -41,8 +41,10 @@ export const POST = async (req) => {
     });
     return new NextResponse(
       JSON.stringify(
-        response,
-        { message: "Blog created successfully" },
+        {
+          response,
+          message: "Blog created successfully",
+        },
         { status: 200 }
       )
     );

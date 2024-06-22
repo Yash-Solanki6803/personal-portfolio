@@ -1,9 +1,9 @@
 "use client";
 // import { createBlog } from "@/lib/server-actions";
-import { titleToSlug } from "@/utils";
+import { titleToSlug, trimCapitalizeAndCreateObjects } from "@/utils";
 import { useState } from "react";
 import { UploadImage, PreviewBlog } from "@/ui";
-function WriteBlog() {
+function AddProject() {
   //Handle Form Data
   const [formData, setFormData] = useState({
     title: "",
@@ -11,6 +11,8 @@ function WriteBlog() {
     thumbnailSrc: "",
     thumbnailAlt: "",
   });
+
+  const [tags, setTags] = useState([]);
 
   const clearForm = () => {
     setFormData({
@@ -35,28 +37,31 @@ function WriteBlog() {
       thumbnailAlt: formData["thumbnailAlt"],
     };
     body.slug = slug;
+
+    body.tags = trimCapitalizeAndCreateObjects(tags);
     console.log("body:", body);
-    const response = await fetch("/api/blogs", {
+    const res = await fetch("/api/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
     });
-    const data = await response.json();
-    const { message, status } = data;
-    if (status === 200) {
-      alert(message, "success");
-    } else {
-      alert(message);
-    }
-    clearForm();
+    // const data = await res.json();
+    // console.log("data:", data);
+    // const { message, status } = data;
+    // if (status === 200) {
+    //   alert(message, "success");
+    // } else {
+    //   alert(message);
+    // }
+    // clearForm();
   };
 
   //Handle Preview
   const [preview, setPreview] = useState(false);
   return (
-    <div className="w-full border border-neutral-800 rounded-2xl bg-[#1C1C1C]  flex flex-col justify-start items-center p-5">
+    <div className="w-full h-full border border-neutral-800 rounded-2xl bg-[#1C1C1C]  flex flex-col justify-start items-center p-5">
       <div className="flex flex-col sm:flex-row mt-6 items-center gap-4 w-full ">
         <UploadImage />
         <button
@@ -67,7 +72,7 @@ function WriteBlog() {
         </button>
       </div>
       <h1 className="text-xl w-full font-light font-sans mt-10 ">
-        Create Blog
+        Add Project
       </h1>
       <div className="border border-neutral-700 my-5 w-full mx-4" />
       {preview ? (
@@ -91,6 +96,24 @@ function WriteBlog() {
             onChange={handleChange}
             required
           />
+          <div className="flex flex-col gap-4 w-full">
+            <input
+              className="text-white bg-slate-950 w-full rounded-md px-4 sm:px-10 py-2  focus:outline-none font-light placeholder:font-medium"
+              type="text"
+              name="tags"
+              value={tags}
+              onChange={(e) => setTags(e.target.value.split(","))}
+              placeholder="Add Tags"
+              required
+            />
+            <div className="flex gap-2">
+              {tags.map((tag) => (
+                <span className="bg-slate-800 text-white px-2 py-1 rounded-md">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
           <input
             className="text-white bg-slate-950 w-full rounded-md px-4 sm:px-10 py-2  focus:outline-none font-light placeholder:font-medium"
             type="text"
@@ -128,4 +151,4 @@ function WriteBlog() {
   );
 }
 
-export default WriteBlog;
+export default AddProject;

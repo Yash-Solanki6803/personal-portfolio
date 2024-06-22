@@ -45,14 +45,14 @@ model Project {
 }
 model TagsOnProjects {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  project       Project     @relation(fields: [projectId], references: [id])
-  projectId     String @db.ObjectId // relation scalar field (used in the `@relation` attribute above)
-  tag   Tag @relation(fields: [tagId], references: [id])
-  tagId String @db.ObjectId // relation scalar field (used in the `@relation` attribute above)
+  project       Project     @relation(fields: [projectSlug], references: [slug])
+  projectSlug     String // relation scalar field (used in the `@relation` attribute above)
+  tag   Tag @relation(fields: [tagSlug], references: [slug])
+  tagSlug String // relation scalar field (used in the `@relation` attribute above)
   assignedAt DateTime @default(now())
   assignedBy String
 
-  @@unique([projectId, tagId])
+  @@unique([projectSlug, tagSlug])
 }
 
 model NewsArticle {

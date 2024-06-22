@@ -44,3 +44,12 @@ export function formatDate(dateString = "") {
 
   return `${dayName}, ${monthName} ${day}, ${year}`;
 }
+
+export function trimCapitalizeAndCreateObjects(array) {
+  return array.map((str) => {
+    const trimmedStr = str.trim();
+    const title = trimmedStr.charAt(0).toUpperCase() + trimmedStr.slice(1);
+    const slug = titleToSlug(title);
+    return { slug, title };
+  });
+}
