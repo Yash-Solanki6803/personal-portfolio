@@ -46,7 +46,7 @@ function WriteBlog() {
     const data = await response.json();
     const { message, status } = data;
     if (status === 200) {
-      alert(message);
+      alert(message, "success");
     } else {
       alert(message);
     }

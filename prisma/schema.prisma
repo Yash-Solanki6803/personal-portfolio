@@ -22,5 +22,44 @@ model Blog{
   updatedAt DateTime @updatedAt
   thumbnailSrc String
   thumbnailAlt String
+  views     Int       @default(0)
 }
 
+model Tag {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  slug  String  @unique
+  title String
+  Projects TagsOnProjects[]
+}
+
+model Project {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime  @default(now())
+  slug      String    @unique
+  title     String
+  content      String
+  thumbnailSrc       String
+  thumbnailAlt String
+  views     Int       @default(0)
+  Tags       TagsOnProjects[]
+}
+model TagsOnProjects {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  project       Project     @relation(fields: [projectId], references: [id])
+  projectId     String @db.ObjectId // relation scalar field (used in the `@relation` attribute above)
+  tag   Tag @relation(fields: [tagId], references: [id])
+  tagId String @db.ObjectId // relation scalar field (used in the `@relation` attribute above)
+  assignedAt DateTime @default(now())
+  assignedBy String
+
+  @@unique([projectId, tagId])
+}
+
+model NewsArticle {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime  @default(now())
+  slug      String    @unique
+  title     String
+  content      String
+  views     Int       @default(0)
+}

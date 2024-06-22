@@ -36,6 +36,9 @@ async function BlogGallery({ blogPage }) {
                       {blog.title}
                     </h2>
                     <span className="text-xs">{date}</span>
+                    <div className="text-xs font-thin mt-2">
+                      {blog.views || 10} views
+                    </div>
                   </div>
                 </div>
               </div>
