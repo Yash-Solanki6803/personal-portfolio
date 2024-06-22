@@ -17,5 +17,5 @@ export function middleware(request) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: "/gallery/blogs/create",
+  matcher: ["/gallery/blogs/create", "/admin"],
 };
