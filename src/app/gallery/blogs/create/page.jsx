@@ -2,8 +2,7 @@
 // import { createBlog } from "@/lib/server-actions";
 import { titleToSlug } from "@/utils";
 import { useState } from "react";
-import PreviewBlog from "@/ui/containers/PreviewBlog/PreviewBlog";
-import UploadImage from "@/ui/components/UploadImage/UploadImage";
+import { UploadImage, PreviewBlog } from "@/ui";
 function WriteBlog() {
   //Handle Form Data
   const [formData, setFormData] = useState({
