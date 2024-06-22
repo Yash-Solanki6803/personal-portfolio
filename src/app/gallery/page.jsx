@@ -1,5 +1,5 @@
-import CardWrapper from "@/components/CardWrapper/CardWrapper";
-import BlogGallery from "@/components/BlogGallery/BlogGallery";
+import CardWrapper from "@/ui/components/CardWrapper/CardWrapper";
+import BlogGallery from "@/ui/containers/BlogGallery/BlogGallery";
 import { PiCodeThin } from "react-icons/pi";
 const gallery = async ({ searchParams }) => {
   const { blogpage, projectpage } = searchParams;

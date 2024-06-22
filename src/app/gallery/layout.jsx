@@ -1,4 +1,4 @@
-import { RightPanel, LeftPanel } from "@/components";
+import { RightPanel, LeftPanel } from "@/ui";
 import { Montserrat } from "next/font/google";
 //Override the layout of the page
 

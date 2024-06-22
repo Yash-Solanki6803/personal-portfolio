@@ -1,6 +1,7 @@
 // app/page.js
 "use client";
 import { handleAuth } from "@/lib/server-actions";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 
 const Authorize = () => {
@@ -18,6 +19,7 @@ const Authorize = () => {
             const response = await handleAuth(formData);
             if (response.authorized) {
               alert("Authorized");
+              redirect("/admin");
             } else {
               setError("Invalid Secret Key");
             }

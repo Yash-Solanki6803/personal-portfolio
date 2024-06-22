@@ -8,7 +8,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
-import Loader from "@/ui/Loader/Loader";
+import Loader from "@/ui/components/Loader/Loader";
 import { FaCopy } from "react-icons/fa";
 
 function UploadImage() {

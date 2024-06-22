@@ -1,7 +1,7 @@
 import { FaMusic, FaPaintBrush } from "react-icons/fa";
 import { IoGameController } from "react-icons/io5";
 import { Tooltip } from "@/ui";
-import CardWrapper from "../CardWrapper/CardWrapper";
+import CardWrapper from "../../components/CardWrapper/CardWrapper";
 import Image from "next/image";
 import Link from "next/link";
 // import col_logo from "/collogo.png";

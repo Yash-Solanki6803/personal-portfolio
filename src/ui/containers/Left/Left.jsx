@@ -1,5 +1,5 @@
 import { EmailForm, ProfileHeroComponent, ProfileBio } from "@/ui";
-import CardWrapper from "../CardWrapper/CardWrapper";
+import CardWrapper from "../../components/CardWrapper/CardWrapper";
 import Sidebar from "../Sidebar/Sidebar";
 const Leftpage = () => {
   return (

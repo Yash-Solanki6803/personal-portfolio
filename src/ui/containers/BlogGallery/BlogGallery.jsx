@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import Pagination from "../Pagination/Pagination";
+import Pagination from "../../components/Pagination/Pagination";
 import { formatDate } from "@/utils";
 
 export const revalidate = 3600;

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import CustomImage from "@/ui/CustomImage/CustomImage";
+import CustomImage from "@/ui/components/CustomImage/CustomImage";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import CopyIcon from "@/ui/CopyIcon/CopyIcon";
+import CopyIcon from "@/ui/components/CopyIcon/CopyIcon";
 import { PiArrowLeftThin } from "react-icons/pi";
 import Image from "next/image";
-import CardWrapper from "@/components/CardWrapper/CardWrapper";
-import AnimatedH1 from "@/ui/AnimatedH1/AnimatedH1";
+import CardWrapper from "@/ui/components/CardWrapper/CardWrapper";
+import AnimatedH1 from "@/ui/components/AnimatedH1/AnimatedH1";
 import { formatDate } from "@/utils";
 
 const getSingleBlog = async (slug) => {

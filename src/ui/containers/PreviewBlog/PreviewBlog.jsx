@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
-import CustomImage from "@/ui/CustomImage/CustomImage";
+import CustomImage from "@/ui/components/CustomImage/CustomImage";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaCopy } from "react-icons/fa";
