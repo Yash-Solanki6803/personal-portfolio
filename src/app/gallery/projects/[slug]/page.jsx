@@ -10,9 +10,9 @@ import CardWrapper from "@/ui/components/CardWrapper/CardWrapper";
 import AnimatedH1 from "@/ui/components/AnimatedH1/AnimatedH1";
 import { formatDate } from "@/utils";
 
-const getSingleBlog = async (slug) => {
+const getSingleProject = async (slug) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_WEB_URL}/api/blogs/${slug}`
+    `${process.env.NEXT_PUBLIC_WEB_URL}/api/projects/${slug}`
   );
   const data = res.json();
   return data;
@@ -20,9 +20,10 @@ const getSingleBlog = async (slug) => {
 
 async function page({ params }) {
   const { slug } = params;
-  const data = await getSingleBlog(slug);
+  const data = await getSingleProject(slug);
 
-  const { title, content, thumbnailSrc, thumbnailAlt, createdAt } = data;
+  const { title, content, thumbnailSrc, thumbnailAlt, views, Tags, createdAt } =
+    data;
   const time = formatDate(createdAt);
   const thumbnail = {
     src: thumbnailSrc,
@@ -62,6 +63,15 @@ async function page({ params }) {
           <span className="text-xs">Written by Yash Solanki</span>
           <div className="w-1 h-1 rounded-full bg-neutral-400" />
           <span className="text-xs">{time}</span>
+          {Tags?.length > 0 && (
+            <div className="flex justify-center gap-2">
+              {Tags.map((tag) => (
+                <span className="bg-neutral-800 px-2 py-1 rounded-md text-xs">
+                  {tag.title}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         <div className="my-11 font-RubikMedium">
           {thumbnail.src && (

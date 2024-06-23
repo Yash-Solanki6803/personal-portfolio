@@ -6,8 +6,10 @@ import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { FaCopy } from "react-icons/fa";
 import { formatDate } from "@/utils";
 
-const PreviewBlog = ({ data }) => {
-  const { title, content, thumbnailSrc, thumbnailAlt } = data;
+const PreviewBlog = ({ data, tags = [] }) => {
+  const { title, content } = data;
+  const thumbnailSrc = data.thumbnailSrc || "";
+  const thumbnailAlt = data.thumbnailAlt || "";
   const time = formatDate();
   const thumbnail = {
     src: thumbnailSrc,
@@ -23,8 +25,18 @@ const PreviewBlog = ({ data }) => {
         <div className="w-1 h-1 rounded-full bg-neutral-400" />
         <span className="text-xs">{time}</span>
       </div>
-      <div className="my-11 font-RubikMedium">
-        {thumbnail.src && (
+      {tags.length > 0 && (
+        <div className="flex justify-center gap-2">
+          {tags.map((tag) => (
+            <span className="bg-neutral-800 px-2 py-1 rounded-md text-xs">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+
+      {thumbnail.src && (
+        <div className="my-11 font-RubikMedium">
           <Image
             src={thumbnail.src}
             width={1000}
@@ -32,8 +44,8 @@ const PreviewBlog = ({ data }) => {
             className="rounded-lg h-56 w-full object-cover"
             alt={thumbnail.alt || "thumbnail"}
           />
-        )}
-      </div>
+        </div>
+      )}
 
       <ReactMarkdown
         className="prose prose-invert prose-pre:bg-[#282C34] prose-pre:relative"

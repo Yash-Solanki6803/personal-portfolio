@@ -15,7 +15,6 @@ const getBlogs = async (blogPage = 1) => {
 
 async function BlogGallery({ blogPage }) {
   const { blogs, totalBlogs } = await getBlogs(blogPage);
-  console.log("Total blogs:", totalBlogs);
   return (
     <div className="  bg-[#1C1C1C] rounded-lg text-neutral-400">
       {blogs &&

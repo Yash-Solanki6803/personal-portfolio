@@ -21,7 +21,6 @@ function Pagination({ count, type = "Blogs" }) {
     if (type === "Projects") {
       return count <= projectPage * 3;
     } else {
-      console.log("isDisabled for Blogs:", count, count <= blogPage * 3);
       return count <= blogPage * 3;
     }
   };

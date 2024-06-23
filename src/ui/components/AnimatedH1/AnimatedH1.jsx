@@ -19,7 +19,7 @@ function AnimatedH1({ children, className }) {
       transition={{ delay: 0.4 }}
       className={"text-3xl font-RubikExtraBold text-center " + className}
     >
-      How to write type-safe CSS Modules
+      {children}
     </motion.h1>
   );
 }

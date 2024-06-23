@@ -1,4 +1,4 @@
-import { ProjectGallery, BlogGallery, CardWrapper } from "@/ui";
+import { ProjectGallery, BlogGallery, NewsGallery, CardWrapper } from "@/ui";
 import { PiCodeThin } from "react-icons/pi";
 const gallery = async ({ searchParams }) => {
   const blogpage = searchParams.blogPage || 1;
@@ -31,38 +31,7 @@ const gallery = async ({ searchParams }) => {
 
           {/* News Section*/}
 
-          <div className="mt-6  bg-[#1C1C1C] rounded-lg text-neutral-400">
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                </div>
-              </div>
-            </div>
-            <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-              <div className="  flex items-center gap-x-3">
-                <div>
-                  <span className="text-sm">July 22, 2023</span>
-                  <h2 className="text-sm font-RubikMedium">
-                    Smooth Animation with React and Framer Motion
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
+          <NewsGallery />
 
           <div className="flex gap-x-6 p-4">
             <PiCodeThin className="text-6xl text-neutral-50" />

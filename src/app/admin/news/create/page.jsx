@@ -1,27 +1,20 @@
 "use client";
 // import { createBlog } from "@/lib/server-actions";
-import { titleToSlug, trimCapitalizeAndCreateObjects } from "@/utils";
+import { titleToSlug } from "@/utils";
 import { useState } from "react";
-import { UploadImage, PreviewBlog } from "@/ui";
-function AddProject() {
+import { PreviewBlog, UploadImage } from "@/ui";
+function PublishArticle() {
   //Handle Form Data
   const [formData, setFormData] = useState({
     title: "",
     content: "",
-    thumbnailSrc: "",
-    thumbnailAlt: "",
   });
-
-  const [tags, setTags] = useState([]);
 
   const clearForm = () => {
     setFormData({
       title: "",
       content: "",
-      thumbnailSrc: "",
-      thumbnailAlt: "",
     });
-    setTags([]);
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,13 +27,9 @@ function AddProject() {
     const body = {
       title: formData["title"],
       content: formData["content"],
-      thumbnailSrc: formData["thumbnailSrc"],
-      thumbnailAlt: formData["thumbnailAlt"],
     };
     body.slug = slug;
-
-    body.tags = trimCapitalizeAndCreateObjects(tags);
-    const res = await fetch("/api/projects", {
+    const res = await fetch("/api/news", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,11 +60,11 @@ function AddProject() {
         </button>
       </div>
       <h1 className="text-xl w-full font-light font-sans mt-10 ">
-        Add Project
+        Publish News Article
       </h1>
-      <div className="border border-neutral-700 my-5 w-full mx-4" />
+      <div className="border border-neutral-700 my-5 w-full mx-4 " />
       {preview ? (
-        <PreviewBlog data={formData} tags={tags} />
+        <PreviewBlog data={formData} />
       ) : (
         <form className="flex flex-col w-full h-full gap-4 ">
           <input
@@ -95,48 +84,6 @@ function AddProject() {
             onChange={handleChange}
             required
           />
-          <div className="flex flex-col gap-4 w-full">
-            <input
-              className="text-white bg-slate-950 w-full rounded-md px-4 sm:px-10 py-2  focus:outline-none font-light placeholder:font-medium"
-              type="text"
-              name="tags"
-              value={tags}
-              onChange={(e) => setTags(e.target.value.split(","))}
-              placeholder="Add Tags"
-              required
-            />
-            <div className="flex gap-2">
-              {tags.map((tag) => (
-                <span className="bg-slate-800 text-white px-2 py-1 rounded-md">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-          <input
-            className="text-white bg-slate-950 w-full rounded-md px-4 sm:px-10 py-2  focus:outline-none font-light placeholder:font-medium"
-            type="text"
-            name="thumbnailSrc"
-            value={formData.thumbnailSrc}
-            onChange={handleChange}
-            placeholder="Add thumbnail URL"
-            required
-          />
-          {formData.thumbnailSrc && (
-            <img
-              src={formData.thumbnailSrc}
-              className="w-full h-36 object-cover rounded-md"
-            />
-          )}
-          <input
-            className="text-white bg-slate-950 w-full rounded-md px-4 sm:px-10 py-2  focus:outline-none font-light placeholder:font-medium"
-            type="text"
-            name="thumbnailAlt"
-            value={formData.thumbnailAlt}
-            onChange={handleChange}
-            placeholder="Add thumbnail Alt"
-            required
-          />
 
           <button
             className=" mt-6 bg-neutral-700 rounded-md py-4 hover:bg-neutral-800 transition-all duration-150 "
@@ -150,4 +97,4 @@ function AddProject() {
   );
 }
 
-export default AddProject;
+export default PublishArticle;

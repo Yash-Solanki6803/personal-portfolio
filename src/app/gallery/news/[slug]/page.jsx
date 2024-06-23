@@ -10,9 +10,9 @@ import CardWrapper from "@/ui/components/CardWrapper/CardWrapper";
 import AnimatedH1 from "@/ui/components/AnimatedH1/AnimatedH1";
 import { formatDate } from "@/utils";
 
-const getSingleBlog = async (slug) => {
+const getSingleArticle = async (slug) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_WEB_URL}/api/blogs/${slug}`
+    `${process.env.NEXT_PUBLIC_WEB_URL}/api/news/${slug}`
   );
   const data = res.json();
   return data;
@@ -20,16 +20,11 @@ const getSingleBlog = async (slug) => {
 
 async function page({ params }) {
   const { slug } = params;
-  const data = await getSingleBlog(slug);
+  const data = await getSingleArticle(slug);
 
-  const { title, content, thumbnailSrc, thumbnailAlt, createdAt } = data;
+  const { title, content, createdAt } = data;
+  console.log(data);
   const time = formatDate(createdAt);
-  const thumbnail = {
-    src: thumbnailSrc,
-    alt: thumbnailAlt,
-    height: 1000,
-    width: 1000,
-  };
   return (
     <CardWrapper customDelay={0.2} className=" text-neutral-50 ">
       {/* Navbar */}
@@ -55,7 +50,7 @@ async function page({ params }) {
         </div>
       </div>
 
-      {/* Blog Content */}
+      {/* News Content */}
       <div className="  mt-9 w-full p-5 border border-neutral-700   rounded-2xl h-full bg-[#1C1C1C] ">
         <AnimatedH1>{title}</AnimatedH1>
         <div className="flex items-center gap-x-2 justify-center my-4 font-RubikRegular">
@@ -63,17 +58,7 @@ async function page({ params }) {
           <div className="w-1 h-1 rounded-full bg-neutral-400" />
           <span className="text-xs">{time}</span>
         </div>
-        <div className="my-11 font-RubikMedium">
-          {thumbnail.src && (
-            <Image
-              src={thumbnail.src}
-              width={1000}
-              height={1000}
-              className="rounded-lg h-56 w-full object-cover"
-              alt={thumbnail.alt || "thumbnail"}
-            />
-          )}
-        </div>
+
         <ReactMarkdown
           className="prose prose-invert prose-pre:bg-[#282C34] prose-pre:relative"
           components={{
