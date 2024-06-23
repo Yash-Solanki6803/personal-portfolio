@@ -5,7 +5,7 @@ const gallery = async ({ searchParams }) => {
   const projectpage = searchParams.projectPage || 1;
 
   return (
-    <CardWrapper customDelay={0.5} className="w-full lg:w-fit ">
+    <CardWrapper customDelay={0.5} className="w-full  ">
       <div className="bg-[#1C1C1C] lg:bg-transparent rounded-2xl ">
         <div>
           <div className="flex gap-x-6 p-4">
@@ -18,9 +18,9 @@ const gallery = async ({ searchParams }) => {
                   built with passion
                 </span>
               </h1>
-              <p className="max-w-sm text-neutral-400 text-sm">
-                I manage and code products strategically, and <br />{" "}
-                occasionally i write about them
+              <p className=" text-neutral-400 text-sm ">
+                I manage and code products strategically, and occasionally i
+                write about them
               </p>
             </div>
           </div>
@@ -43,9 +43,9 @@ const gallery = async ({ searchParams }) => {
                   created with love.
                 </span>
               </h1>
-              <p className="max-w-sm text-neutral-400 text-sm">
-                I write and explain about softwares, and <br /> occasionally i
-                rant about them
+              <p className="text-neutral-400 text-sm">
+                I write and explain about softwares, and occasionally i rant
+                about them
               </p>
             </div>
           </div>

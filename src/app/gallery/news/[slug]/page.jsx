@@ -26,9 +26,9 @@ async function page({ params }) {
   console.log(data);
   const time = formatDate(createdAt);
   return (
-    <CardWrapper customDelay={0.2} className=" text-neutral-50 ">
+    <CardWrapper customDelay={0.2} className=" text-neutral-50 w-full ">
       {/* Navbar */}
-      <div className="sticky top-5 ">
+      <div className="sticky top-5 z-50">
         <div className=" ">
           <div className="-mt-6   ">
             <div className="bg-neutral-700/25 backdrop-blur-md h-10  w-full rounded-xl flex items-center gap-x-7 ">
