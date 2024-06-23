@@ -31,7 +31,7 @@ async function page({ params }) {
     width: 1000,
   };
   return (
-    <CardWrapper customDelay={0.2} className=" text-neutral-50 w-full border ">
+    <CardWrapper customDelay={0.2} className=" text-neutral-50 w-full ">
       {/* Navbar */}
       <div className="sticky top-5 z-50">
         <div className=" ">
