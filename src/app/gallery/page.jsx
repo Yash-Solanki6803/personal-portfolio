@@ -1,8 +1,9 @@
-import CardWrapper from "@/ui/components/CardWrapper/CardWrapper";
-import BlogGallery from "@/ui/containers/BlogGallery/BlogGallery";
+import { ProjectGallery, BlogGallery, CardWrapper } from "@/ui";
 import { PiCodeThin } from "react-icons/pi";
 const gallery = async ({ searchParams }) => {
-  const { blogpage, projectpage } = searchParams;
+  const blogpage = searchParams.blogPage || 1;
+  const projectpage = searchParams.projectPage || 1;
+
   return (
     <CardWrapper customDelay={0.5} className="w-full lg:w-fit ">
       <div className="bg-[#1C1C1C] lg:bg-transparent rounded-2xl ">
@@ -26,7 +27,7 @@ const gallery = async ({ searchParams }) => {
 
           <div className="border border-neutral-700 my-5" />
 
-          <BlogGallery blogPage={blogpage} />
+          <ProjectGallery projectPage={projectpage} />
 
           {/* News Section*/}
 
@@ -83,6 +84,7 @@ const gallery = async ({ searchParams }) => {
           <div className="border border-neutral-700 my-5" />
 
           {/* With image */}
+
           <BlogGallery blogPage={blogpage} />
         </div>
       </div>

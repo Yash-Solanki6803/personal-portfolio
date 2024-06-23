@@ -5,40 +5,39 @@ import { formatDate } from "@/utils";
 
 export const revalidate = 3600;
 
-const getBlogs = async (blogPage = 1) => {
+const getProjects = async (projectPage = 1) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_WEB_URL}/api/blogs?blogPage=${blogPage}`
+    `${process.env.NEXT_PUBLIC_WEB_URL}/api/projects?projectPage=${projectPage}`
   );
   const data = await res.json();
   return data;
 };
 
-async function BlogGallery({ blogPage }) {
-  const { blogs, totalBlogs } = await getBlogs(blogPage);
-  console.log("Total blogs:", totalBlogs);
+async function ProjectGallery({ projectPage }) {
+  const { projects, totalProjects } = await getProjects(projectPage);
   return (
     <div className="  bg-[#1C1C1C] rounded-lg text-neutral-400">
-      {blogs &&
-        blogs.map((blog) => {
-          const date = formatDate(blog.createdAt);
+      {projects &&
+        projects.map((project) => {
+          const date = formatDate(project.createdAt);
           return (
-            <Link href={`/gallery/blogs/${blog.slug}`} key={blog.id}>
+            <Link href={`/gallery/projects/${project.slug}`} key={project.id}>
               <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
                 <div className="  flex items-center gap-x-3">
                   <Image
                     width={1000}
                     height={1000}
                     className="w-24 h-24 object-cover rounded-md"
-                    src={blog.thumbnailSrc}
-                    alt={blog.thumbnailAlt}
+                    src={project.thumbnailSrc}
+                    alt={project.thumbnailAlt}
                   />
                   <div>
                     <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1">
-                      {blog.title}
+                      {project.title}
                     </h2>
                     <span className="text-xs">{date}</span>
                     <div className="text-xs font-thin mt-2">
-                      {blog.views || 10} views
+                      {project.views || 10} views
                     </div>
                   </div>
                 </div>
@@ -46,9 +45,9 @@ async function BlogGallery({ blogPage }) {
             </Link>
           );
         })}
-      <Pagination count={totalBlogs} />
+      <Pagination count={totalProjects} type="Projects" />
     </div>
   );
 }
 
-export default BlogGallery;
+export default ProjectGallery;

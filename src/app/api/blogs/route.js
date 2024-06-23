@@ -16,6 +16,7 @@ export const GET = async (req) => {
       prisma.blog.count(),
     ]);
     // blogs.reverse();
+
     return new NextResponse(
       JSON.stringify({ blogs, totalBlogs }, { status: 200 })
     );
@@ -29,6 +30,15 @@ export const GET = async (req) => {
 
 export const POST = async (req) => {
   const { title, content, thumbnailSrc, thumbnailAlt, slug } = await req.json();
+
+  //check cookies
+  const authToken = req.cookies.get("yash-portfolio-auth")?.value || "";
+  if (authToken !== process.env.AUTH_TOKEN) {
+    return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
+      status: 401,
+    });
+  }
+
   try {
     const response = await prisma.blog.create({
       data: {

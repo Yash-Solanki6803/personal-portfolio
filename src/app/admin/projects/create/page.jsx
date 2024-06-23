@@ -21,6 +21,7 @@ function AddProject() {
       thumbnailSrc: "",
       thumbnailAlt: "",
     });
+    setTags([]);
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -39,7 +40,6 @@ function AddProject() {
     body.slug = slug;
 
     body.tags = trimCapitalizeAndCreateObjects(tags);
-    console.log("body:", body);
     const res = await fetch("/api/projects", {
       method: "POST",
       headers: {
@@ -47,15 +47,14 @@ function AddProject() {
       },
       body: JSON.stringify(body),
     });
-    // const data = await res.json();
-    // console.log("data:", data);
-    // const { message, status } = data;
-    // if (status === 200) {
-    //   alert(message, "success");
-    // } else {
-    //   alert(message);
-    // }
-    // clearForm();
+    const data = await res.json();
+    const { message, status } = data;
+    if (status === 200) {
+      alert(message, "success");
+    } else {
+      alert(message);
+    }
+    clearForm();
   };
 
   //Handle Preview

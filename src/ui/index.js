@@ -17,6 +17,7 @@ export { default as ResumeInput } from "./components/Admin/resumeInput/resumeInp
 
 //Containers export
 export { default as BlogGallery } from "./containers/BlogGallery/BlogGallery";
+export { default as ProjectGallery } from "./containers/ProjectGallery/ProjectGallery";
 export { default as EmailForm } from "./containers/EmailForm/EmailForm";
 export { default as LeftPanel } from "./containers/Left/Left";
 export { default as PreviewBlog } from "./containers/PreviewBlog/PreviewBlog";

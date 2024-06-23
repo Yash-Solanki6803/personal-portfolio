@@ -43,7 +43,6 @@ function CreateBlog() {
       body: JSON.stringify(body),
     });
     const data = await res.json();
-    console.log("data:", data);
     const { message, status } = data;
     if (status === 200) {
       alert(message, "success");

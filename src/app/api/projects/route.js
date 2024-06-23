@@ -4,19 +4,29 @@ import { NextResponse } from "next/server";
 //Get all Projects
 
 export const GET = async (req) => {
+  const { searchParams } = new URL(req.url);
+  let projectPage = searchParams.get("projectPage") || 1;
+  const POST_PER_PAGE = 3;
+
   try {
-    const projects = await prisma.project.findMany({
-      include: {
-        Tags: {
-          select: {
-            tag: true,
+    const [projects, totalProjects] = await prisma.$transaction([
+      prisma.project.findMany({
+        take: POST_PER_PAGE,
+        skip: POST_PER_PAGE * (projectPage - 1),
+        orderBy: { createdAt: "desc" },
+        include: {
+          Tags: {
+            select: {
+              tag: true,
+            },
           },
         },
-      },
-    });
+      }),
+      prisma.project.count(),
+    ]);
     return new NextResponse(
       JSON.stringify(
-        { projects, message: "Successfully fetched Projects" },
+        { projects, totalProjects, message: "Successfully fetched Projects" },
         { status: 200 }
       )
     );
@@ -33,6 +43,14 @@ export const GET = async (req) => {
 export const POST = async (req) => {
   const { title, content, thumbnailSrc, thumbnailAlt, slug, tags } =
     await req.json();
+
+  //check cookies
+  const authToken = req.cookies.get("yash-portfolio-auth")?.value || "";
+  if (authToken !== process.env.AUTH_TOKEN) {
+    return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
+      status: 401,
+    });
+  }
 
   //create tags array
 
@@ -87,4 +105,8 @@ export const POST = async (req) => {
       { status: 500 }
     );
   }
+
+  // return new NextResponse(JSON.stringify({ message: "Creating Project" }), {
+  //   status: 200,
+  // });
 };
