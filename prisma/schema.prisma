@@ -45,7 +45,7 @@ model Project {
 }
 model TagsOnProjects {
   id String @id @default(auto()) @map("_id") @db.ObjectId
-  project       Project     @relation(fields: [projectSlug], references: [slug])
+  project       Project     @relation(fields: [projectSlug], references: [slug] ,onDelete: Cascade)
   projectSlug     String // relation scalar field (used in the `@relation` attribute above)
   tag   Tag @relation(fields: [tagSlug], references: [slug])
   tagSlug String // relation scalar field (used in the `@relation` attribute above)

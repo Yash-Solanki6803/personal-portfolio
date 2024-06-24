@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/utils";
-
+import { EditButton, DeleteButton } from "@/ui";
 export const revalidate = 3600;
 
 const getProjects = async (projectPage = 1) => {
@@ -20,28 +20,34 @@ async function ProjectGallery({ projectPage }) {
         projects?.map((project) => {
           const date = formatDate(project.createdAt);
           return (
-            <Link href={`/gallery/projects/${project.slug}`} key={project.id}>
-              <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
-                <div className="  flex items-center gap-x-3">
-                  <Image
-                    width={1000}
-                    height={1000}
-                    className="w-24 h-24 object-cover rounded-md"
-                    src={project.thumbnailSrc}
-                    alt={project.thumbnailAlt}
-                  />
-                  <div>
-                    <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1">
-                      {project.title}
-                    </h2>
-                    <span className="text-xs">{date}</span>
-                    <div className="text-xs font-thin mt-2">
-                      {project.views || 10} views
+            <div className=" relative">
+              <Link href={`/gallery/projects/${project.slug}`} key={project.id}>
+                <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
+                  <div className="  flex items-center gap-x-3">
+                    <Image
+                      width={1000}
+                      height={1000}
+                      className="w-24 h-24 object-cover rounded-md"
+                      src={project.thumbnailSrc}
+                      alt={project.thumbnailAlt}
+                    />
+                    <div>
+                      <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1">
+                        {project.title}
+                      </h2>
+                      <span className="text-xs">{date}</span>
+                      <div className="text-xs font-thin mt-2">
+                        {project.views || 10} views
+                      </div>
                     </div>
                   </div>
                 </div>
+              </Link>
+              <div className="absolute top-4 right-4  flex flex-col gap-2">
+                <EditButton slug={project?.slug} type="projects" />
+                <DeleteButton slug={project?.slug} type="projects" />
               </div>
-            </Link>
+            </div>
           );
         })}
     </div>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { formatDate } from "@/utils";
+import { DeleteButton, EditButton } from "@/ui";
 
 export const revalidate = 3600;
 
@@ -17,18 +18,24 @@ async function NewsGallery({ blogPage }) {
         newsArticles?.map((article) => {
           const date = formatDate(article.createdAt);
           return (
-            <Link href={`/gallery/news/${article.slug}`} key={article.id}>
-              <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
-                <div className="  flex items-center gap-x-3">
-                  <div>
-                    <span className="text-sm">{date}</span>
-                    <h2 className="text-sm font-RubikMedium">
-                      {article.title}
-                    </h2>
+            <div className="relative">
+              <Link href={`/gallery/news/${article.slug}`} key={article.id}>
+                <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
+                  <div className="  flex items-center gap-x-3">
+                    <div>
+                      <span className="text-sm">{date}</span>
+                      <h2 className="text-sm font-RubikMedium">
+                        {article.title}
+                      </h2>
+                    </div>
                   </div>
                 </div>
+              </Link>
+              <div className="absolute top-4 right-4  flex  gap-2">
+                <EditButton slug={article?.slug} type="news" />
+                <DeleteButton slug={article?.slug} type="news" />
               </div>
-            </Link>
+            </div>
           );
         })}
     </div>

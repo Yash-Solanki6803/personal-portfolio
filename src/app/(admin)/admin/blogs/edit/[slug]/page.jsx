@@ -28,14 +28,6 @@ function EditBlog({ params }) {
     fetchBlog();
   }, []);
 
-  const clearForm = () => {
-    setFormData({
-      title: "",
-      content: "",
-      thumbnailSrc: "",
-      thumbnailAlt: "",
-    });
-  };
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -51,7 +43,7 @@ function EditBlog({ params }) {
       thumbnailAlt: formData["thumbnailAlt"],
     };
     body.slug = slug;
-    const res = await fetch(`/api/blogs/edit/${slug}`, {
+    const res = await fetch(`/api/blogs/${slug}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

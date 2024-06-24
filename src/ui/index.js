@@ -14,6 +14,8 @@ export { default as Tooltip } from "./components/Tooltip/Tooltip";
 export { default as Navlink } from "./components/Admin/Navlink/Navlink";
 export { default as CustomLineBreak } from "./components/CustomLineBreak/CustomLineBreak";
 export { default as ResumeInput } from "./components/Admin/resumeInput/resumeInput";
+export { default as EditButton } from "./components/Admin/EditButton/EditButton";
+export { default as DeleteButton } from "./components/Admin/DeleteButton/DeleteButton";
 
 //Containers export
 export { default as BlogGallery } from "./containers/BlogGallery/BlogGallery";

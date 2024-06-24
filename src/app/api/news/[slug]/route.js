@@ -21,3 +21,45 @@ export const GET = async (req, { params }) => {
     );
   }
 };
+
+export const PUT = async (req, { params }) => {
+  const { slug } = params;
+  const data = await req.json();
+  try {
+    const newsArticle = await prisma.newsArticle.update({
+      where: { slug },
+      data: data,
+    });
+    return new NextResponse(
+      JSON.stringify(
+        { newsArticle, message: "Successfully Updated" },
+        { status: 200 }
+      )
+    );
+  } catch (err) {
+    console.log(err);
+    return new NextResponse(
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+    );
+  }
+};
+
+export const DELETE = async (req, { params }) => {
+  const { slug } = params;
+  try {
+    const newsArticle = await prisma.newsArticle.delete({
+      where: { slug },
+    });
+    return new NextResponse(
+      JSON.stringify(
+        { newsArticle, message: "Successfully Deleted Article" },
+        { status: 200 }
+      )
+    );
+  } catch (err) {
+    console.log(err);
+    return new NextResponse(
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+    );
+  }
+};

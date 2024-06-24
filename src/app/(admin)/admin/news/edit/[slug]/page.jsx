@@ -40,7 +40,7 @@ function PublishArticle({ params }) {
       content: formData["content"],
     };
     body.slug = newSlug;
-    const res = await fetch(`/api/news/edit/${slug}`, {
+    const res = await fetch(`/api/news/${slug}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

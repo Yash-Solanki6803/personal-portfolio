@@ -20,15 +20,17 @@ function AddProject({ params }) {
     thumbnailAlt: "",
   });
 
+  const [tags, setTags] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getProject(slug);
       setFormData(data);
+      const fetchedTags = data.Tags.map((Tag) => Tag.title);
+      setTags(fetchedTags);
     };
     fetchData();
   }, []);
-
-  const [tags, setTags] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,7 +49,7 @@ function AddProject({ params }) {
     body.slug = slug;
 
     body.tags = trimCapitalizeAndCreateObjects(tags);
-    const res = await fetch(`/api/projects/edit/${slug}`, {
+    const res = await fetch(`/api/projects/${slug}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
