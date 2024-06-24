@@ -1,10 +1,10 @@
 import prisma from "@/utils/connect";
 import { NextResponse } from "next/server";
-
+import { cookies } from "next/headers";
 // get all blogs
 export const GET = async (req) => {
   //check cookies
-  const authToken = req.cookies.get("yash-portfolio-auth")?.value || "";
+  const authToken = cookies().get("yash-portfolio-auth")?.value || "";
   console.log("authToken:", authToken);
   if (authToken !== process.env.AUTH_TOKEN) {
     return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {

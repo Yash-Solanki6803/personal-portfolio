@@ -2,20 +2,23 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/utils";
 import { DeleteButton, EditButton } from "@/ui";
+import { cookies } from "next/headers";
 
-export const revalidate = 3600;
+// export const revalidate = 3600;
 
 const getBlogs = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_WEB_URL}/api/blogs/all`, {
-    headers: {
-      "Content-Type": "application/json",
-    },
+    cache: "no-store",
+    headers: { Cookie: cookies().toString() },
   });
+  if (!res) {
+    throw new Error("Failed fetching news articles");
+  }
   const data = await res.json();
   return data;
 };
 
-async function BlogGallery({}) {
+async function BlogGallery() {
   const blogs = await getBlogs();
   return (
     <div className="  bg-[#1C1C1C] rounded-lg text-neutral-400">

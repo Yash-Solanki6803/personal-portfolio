@@ -3,6 +3,7 @@
 import { titleToSlug, trimCapitalizeAndCreateObjects } from "@/utils";
 import { useState } from "react";
 import { UploadImage, PreviewBlog } from "@/ui";
+// import { cookies } from "next/headers";
 function AddProject() {
   //Handle Form Data
   const [formData, setFormData] = useState({
@@ -44,6 +45,7 @@ function AddProject() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        // Cookie: cookies().toString(),
       },
       body: JSON.stringify(body),
     });

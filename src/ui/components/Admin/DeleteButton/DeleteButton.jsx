@@ -1,5 +1,7 @@
 "use client";
 
+// import { cookies } from "next/headers";
+
 function DeleteButton({ slug, type = "blogs" }) {
   const handleDelete = async () => {
     const res = await fetch(

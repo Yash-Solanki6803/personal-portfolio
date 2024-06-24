@@ -1,4 +1,5 @@
 import prisma from "@/utils/connect";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
@@ -43,7 +44,7 @@ export const PUT = async (req, { params }) => {
   const tags = data.tags;
 
   //check cookies
-  const authToken = req.cookies.get("yash-portfolio-auth")?.value || "";
+  const authToken = cookies().get("yash-portfolio-auth")?.value || "";
   if (authToken !== process.env.AUTH_TOKEN) {
     return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
       status: 401,
@@ -119,7 +120,7 @@ export const DELETE = async (req, { params }) => {
   const { slug } = params;
 
   //check cookies
-  const authToken = req.cookies.get("yash-portfolio-auth")?.value || "";
+  const authToken = cookies().get("yash-portfolio-auth")?.value || "";
   if (authToken !== process.env.AUTH_TOKEN) {
     return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
       status: 401,

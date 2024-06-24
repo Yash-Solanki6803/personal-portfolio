@@ -1,4 +1,5 @@
 "use client";
+// import { cookies } from "next/headers";
 import { useState } from "react";
 
 function resumeInput() {
@@ -11,6 +12,7 @@ function resumeInput() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          // Cookie: cookies().toString(),
         },
         body: JSON.stringify(newData),
       }

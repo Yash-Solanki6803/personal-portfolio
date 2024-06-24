@@ -1,4 +1,5 @@
 import prisma from "@/utils/connect";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 //Get  Projects
@@ -45,7 +46,7 @@ export const POST = async (req) => {
     await req.json();
 
   //check cookies
-  const authToken = req.cookies.get("yash-portfolio-auth")?.value || "";
+  const authToken = cookies().get("yash-portfolio-auth")?.value || "";
   if (authToken !== process.env.AUTH_TOKEN) {
     return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
       status: 401,

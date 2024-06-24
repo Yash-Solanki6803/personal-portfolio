@@ -2,12 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/utils";
 import { EditButton, DeleteButton } from "@/ui";
-export const revalidate = 3600;
+import { cookies } from "next/headers";
 
 const getProjects = async (projectPage = 1) => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_WEB_URL}/api/projects/all`
+    `${process.env.NEXT_PUBLIC_WEB_URL}/api/projects/all`,
+    {
+      cache: "no-store",
+      headers: { Cookie: cookies().toString() },
+    }
   );
+  if (!res.ok) {
+    throw new Error("Failed fetching news articles");
+  }
   const data = await res.json();
   return data;
 };
