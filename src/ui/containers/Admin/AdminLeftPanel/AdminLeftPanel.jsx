@@ -13,7 +13,6 @@ const Leftpage = () => {
           </Link>
           <CustomLineBreak />
           <Navlink href="/gallery">Gallery</Navlink>
-          <Navlink href="/admin">Dashboard</Navlink>
           <Navlink href="/admin/blogs">Blogs</Navlink>
           <Navlink href="/admin/projects">Projects</Navlink>
           <Navlink href="/admin/news">News</Navlink>
