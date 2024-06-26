@@ -1,3 +1,4 @@
+import data from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { PiHouseLight, PiGithubLogoLight } from "react-icons/pi";
@@ -20,8 +21,8 @@ export default function Home() {
         </h1>
 
         <p className="text-neutral-400 lg:max-w-lg text-center font-RubikRegular ">
-          All features are done and coded by Joscript, please use this template
-          with free mind, remember to subscribe and share our videos
+          There is only one thing more painful than learning from experience and
+          that is not learning from experience.
         </p>
       </div>
 

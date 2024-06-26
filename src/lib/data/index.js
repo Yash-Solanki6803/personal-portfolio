@@ -8,6 +8,7 @@ const data = {
     instagram: "https://www.instagram.com/yashsolanki.dev/",
     youtube: "https://www.youtube.com/channel/UC672nbHkM-9Ligu8Mp7HU2w",
   },
+  portfolioDesignLink: "https://youtu.be/p69xC3CW7WQ?si=xCSwXwxB5IthGfSK",
 };
 
 export default data;
