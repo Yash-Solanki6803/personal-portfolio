@@ -1,10 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import {
-  PiInstagramLogoThin,
-  PiYoutubeLogoThin,
-  PiLinkedinLogoThin,
-} from "react-icons/pi";
+import data from "@/lib/data";
 import { RiInstagramFill } from "react-icons/ri";
 import { FaYoutube, FaLinkedin } from "react-icons/fa";
 import {
@@ -14,6 +10,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import Link from "next/link";
 
 function TestimonialTooltip() {
   const [hoveredIndex, setHoveredIndex] = useState();
@@ -37,19 +34,19 @@ function TestimonialTooltip() {
     {
       id: 1,
       name: "Instagram",
-      position: "www.instagram.com",
+      position: data.socialLinks.instagram,
       image: <RiInstagramFill className="text-xl" />,
     },
     {
       id: 2,
       name: "Youtube",
-      position: "www.youtube.com/joscript",
+      position: data.socialLinks.youtube,
       image: <FaYoutube className="text-xl" />,
     },
     {
       id: 3,
       name: "LinkedIn",
-      position: "www.Linkedin.com/joscript",
+      position: data.socialLinks.linkedin,
       image: <FaLinkedin className="text-xl" />,
     },
   ];
@@ -61,11 +58,12 @@ function TestimonialTooltip() {
     "
     >
       {people.map((testimonial, idx) => (
-        <div
+        <Link
           className="-mr-4  relative"
           key={testimonial.id}
           onMouseEnter={() => setHoveredIndex(testimonial.id)}
           onMouseLeave={() => setHoveredIndex(null)}
+          href={testimonial.position}
         >
           <AnimatePresence mode="wait">
             {hoveredIndex === testimonial.id && (
@@ -99,7 +97,7 @@ function TestimonialTooltip() {
             )}
           </AnimatePresence>
           <p>{testimonial.image}</p>
-        </div>
+        </Link>
       ))}
     </div>
   );

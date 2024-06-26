@@ -4,6 +4,7 @@ import { Tooltip } from "@/ui";
 import CardWrapper from "../../components/CardWrapper/CardWrapper";
 import Image from "next/image";
 import Link from "next/link";
+import data from "@/lib/data";
 // import col_logo from "/collogo.png";
 
 const Rightpage = () => {
@@ -18,7 +19,7 @@ const Rightpage = () => {
               resume <br />
             </p>
             <Link
-              href={process.env.NEXT_PUBLIC_RESUME_LINK}
+              href={data.resumeLink}
               className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-RubikMedium text-neutral-50 hover:bg-green-700 transition-all"
             >
               Download
