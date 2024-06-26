@@ -17,7 +17,6 @@ export function middleware(request) {
         `${process.env.NEXT_PUBLIC_WEB_URL}/admin/blogs`
       );
     }
-    console.log("Authorized");
   }
 }
 
