@@ -27,6 +27,7 @@ function ProfileBio() {
 
       <div className="border border-[#282828] text-neutral-300 my-6" />
 
+      {/* Work History Section */}
       <div className="my-4 ">
         <h1 className="font-RubikRegular">Work History</h1>
         <div className="mt-7 flex  justify-between">
@@ -54,7 +55,9 @@ function ProfileBio() {
           </small>
         </div>
       </div>
-      <div className="my-4 ">
+
+      {/* Volunteering Section */}
+      <div className="my-4 md:block hidden">
         <h1 className="font-RubikRegular">Volunteering</h1>
         <div className="mt-7 flex  justify-between">
           <div className="flex gap-x-3 w-2/3">

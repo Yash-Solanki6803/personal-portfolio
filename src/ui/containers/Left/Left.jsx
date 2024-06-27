@@ -15,11 +15,8 @@ const Leftpage = () => {
         </div>
       </CardWrapper>
       <Sidebar>
-        <CardWrapper
-          customDelay={0.2}
-          className=" rounded-2xl w-screen px-10 md:px-24 h-fit top-5 "
-        >
-          <div className=" w-full p-3  border border-neutral-800 rounded-2xl h-full bg-[#1C1C1C]  ">
+        <CardWrapper customDelay={0.2} className=" w-screen px-4 h-full top-5 ">
+          <div className=" w-full p-3 h-fit border border-neutral-800 rounded-2xl bg-[#1C1C1C]  ">
             <ProfileHeroComponent />
             <EmailForm />
             <ProfileBio />

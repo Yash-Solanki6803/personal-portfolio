@@ -57,7 +57,7 @@ function EmailForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#282828] p-1  rounded-md md:flex items-center  justify-between h-9 w-full hidden "
+      className="bg-[#282828] p-1  rounded-md flex items-center  justify-between h-9 w-full  "
     >
       <input
         value={email}

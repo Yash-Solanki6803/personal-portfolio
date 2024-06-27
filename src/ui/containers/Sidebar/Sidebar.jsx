@@ -6,7 +6,7 @@ function Sidebar({ children }) {
   return (
     <div
       className={
-        "fixed z-50 right-0 top-0 h-full pt-16 px-4" +
+        "fixed  z-50 right-0 top-0 h-full pt-16" +
         (open ? " backdrop-blur-md" : "")
       }
     >
