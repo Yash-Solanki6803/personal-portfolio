@@ -16,6 +16,7 @@ export { default as CustomLineBreak } from "./components/CustomLineBreak/CustomL
 export { default as ResumeInput } from "./components/Admin/resumeInput/resumeInput";
 export { default as EditButton } from "./components/Admin/EditButton/EditButton";
 export { default as DeleteButton } from "./components/Admin/DeleteButton/DeleteButton";
+export { default as ToggleFullScreen } from "./components/ToggleFullScreen/ToggleFullScreen";
 
 //Containers export
 export { default as BlogGallery } from "./containers/BlogGallery/BlogGallery";
