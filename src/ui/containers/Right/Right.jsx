@@ -20,7 +20,8 @@ const Rightpage = () => {
             </p>
             <Link
               href={data.resumeLink}
-              className="bg-[#696969] h-7 p-1 rounded-md text-xs w-full font-RubikMedium text-neutral-50 hover:bg-green-700 transition-all"
+              target="_blank"
+              className="bg-[#696969]  py-2 px-4 rounded-md text-xs w-full font-RubikMedium text-neutral-50 hover:bg-green-700 transition-all"
             >
               Download
             </Link>
@@ -65,7 +66,7 @@ const Rightpage = () => {
           </div>
         </div>
 
-        <div className="bg-[#1C1C1C] min-w-min rounded-2xl p-4 border border-neutral-800 mt-3 text-neutral-50">
+        <div className="bg-[#1C1C1C] min-w-min rounded-2xl p-4 border border-neutral-800 mt-3 text-neutral-50 flex flex-col items-center">
           <Image
             width={1000}
             height={1000}
@@ -73,10 +74,15 @@ const Rightpage = () => {
             src="/collogo.png"
             alt=""
           />
-          <p className="my-3 font-RubikMedium text-sm">Check our Discord</p>
-          <button className="bg-[#696969] hover:bg-green-800 h-7 p-1 rounded-md text-xs w-full font-RubikMedium transition-all">
+          <p className="my-3 font-RubikMedium text-sm">
+            Check my Discord Community
+          </p>
+          <Link
+            href={data.discordLink}
+            className="bg-[#696969] block hover:bg-green-800  py-2 rounded-md text-xs text-center w-full font-RubikMedium transition-all"
+          >
             Get Invitation Link
-          </button>
+          </Link>
         </div>
       </div>
     </CardWrapper>

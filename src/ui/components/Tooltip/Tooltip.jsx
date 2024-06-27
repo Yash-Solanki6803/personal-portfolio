@@ -64,6 +64,7 @@ function TestimonialTooltip() {
           onMouseEnter={() => setHoveredIndex(testimonial.id)}
           onMouseLeave={() => setHoveredIndex(null)}
           href={testimonial.position}
+          target="_blank"
         >
           <AnimatePresence mode="wait">
             {hoveredIndex === testimonial.id && (
