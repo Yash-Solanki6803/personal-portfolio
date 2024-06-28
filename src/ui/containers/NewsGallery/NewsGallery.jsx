@@ -22,7 +22,7 @@ async function NewsGallery({ blogPage }) {
                 <div className="  flex items-center gap-x-3">
                   <div>
                     <span className="text-sm">{date}</span>
-                    <h2 className="text-sm font-RubikMedium">
+                    <h2 className="text-sm font-RubikMedium news-shine">
                       {article.title}
                     </h2>
                   </div>

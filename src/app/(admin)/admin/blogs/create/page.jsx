@@ -61,7 +61,7 @@ function CreateBlog() {
   //Handle Preview
   const [preview, setPreview] = useState(false);
   return (
-    <div className="w-full h-full border border-neutral-800 rounded-2xl bg-[#1C1C1C]  flex flex-col justify-start items-center p-5">
+    <div className="w-full h-fit border border-neutral-800 rounded-2xl bg-[#1C1C1C]  flex flex-col justify-start items-center p-5">
       <div className="flex flex-col sm:flex-row mt-6 items-center gap-4 w-full ">
         <UploadImage />
         <button

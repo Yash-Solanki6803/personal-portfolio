@@ -23,7 +23,6 @@ async function page({ params }) {
   const data = await getSingleArticle(slug);
 
   const { title, content, createdAt } = data;
-  console.log(data);
   const time = formatDate(createdAt);
   return (
     <CardWrapper customDelay={0.2} className=" text-neutral-50 w-full ">

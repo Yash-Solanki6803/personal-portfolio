@@ -73,6 +73,18 @@ body {
   animation-fill-mode: forwards;
   -webkit-text-size-adjust: none;
 }
+.news-shine {
+  padding: 12px 0;
+  padding-right: 7px;
+  background: linear-gradient(to right, #b4b4b4 0, #ffffff 10%, #9b9b9b 20%);
+  background-position: 0;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 10s infinite linear;
+  /* animation-delay: 10s; */
+  animation-fill-mode: forwards;
+  -webkit-text-size-adjust: none;
+}
 
 @keyframes shine {
   0% {
