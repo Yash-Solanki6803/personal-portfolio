@@ -5,7 +5,6 @@ import { cookies } from "next/headers";
 export const GET = async (req) => {
   //check cookies
   const authToken = cookies().get("yash-portfolio-auth")?.value || "";
-  console.log("authToken:", authToken);
   if (authToken !== process.env.AUTH_TOKEN) {
     return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
       status: 401,

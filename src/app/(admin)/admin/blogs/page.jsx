@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { formatDate } from "@/utils";
-import { DeleteButton, EditButton } from "@/ui";
+import { DeleteButton, EditButton, Loader } from "@/ui";
 import { cookies } from "next/headers";
 
 // export const revalidate = 3600;

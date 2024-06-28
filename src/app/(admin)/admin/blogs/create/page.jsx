@@ -3,7 +3,10 @@
 import { titleToSlug } from "@/utils";
 import { useState } from "react";
 import { UploadImage, PreviewBlog } from "@/ui";
+import { useRouter } from "next/navigation";
+import { revalidatePath } from "next/cache";
 function CreateBlog() {
+  const router = useRouter();
   //Handle Form Data
   const [formData, setFormData] = useState({
     title: "",
@@ -46,6 +49,9 @@ function CreateBlog() {
     const { message, status } = data;
     if (status === 200) {
       alert(message, "success");
+      revalidatePath("/api/blogs");
+      // Redirect to the newly created blog;
+      router.push(`/gallery/blogs/${slug}`);
     } else {
       alert(message);
     }

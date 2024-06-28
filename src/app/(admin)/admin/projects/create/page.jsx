@@ -3,8 +3,11 @@
 import { titleToSlug, trimCapitalizeAndCreateObjects } from "@/utils";
 import { useState } from "react";
 import { UploadImage, PreviewBlog } from "@/ui";
+import { revalidatePath } from "next/cache";
+import { useRouter } from "next/router";
 // import { cookies } from "next/headers";
 function AddProject() {
+  const router = useRouter();
   //Handle Form Data
   const [formData, setFormData] = useState({
     title: "",
@@ -53,6 +56,9 @@ function AddProject() {
     const { message, status } = data;
     if (status === 200) {
       alert(message, "success");
+      revalidatePath("/api/blogs");
+      // Redirect to the newly created blog;
+      router.push(`/gallery/blogs/${slug}`);
     } else {
       alert(message);
     }

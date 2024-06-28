@@ -1,8 +1,9 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 // import { cookies } from "next/headers";
 
 function DeleteButton({ slug, type = "blogs" }) {
+  const router = useRouter();
   const handleDelete = async () => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_WEB_URL}/api/${type}/${slug}`,
@@ -12,6 +13,8 @@ function DeleteButton({ slug, type = "blogs" }) {
     );
     const data = await res.json();
     alert(data?.message);
+    // Refresh the page
+    router.refresh();
   };
   return (
     <button
