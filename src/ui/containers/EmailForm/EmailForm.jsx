@@ -1,4 +1,6 @@
 "use client";
+import { Loader } from "@/ui";
+import { checkValidEmail } from "@/utils";
 import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect } from "react";
 
@@ -6,6 +8,7 @@ function EmailForm() {
   // const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const controls = useAnimation();
 
@@ -28,20 +31,18 @@ function EmailForm() {
       : setIsValidEmail(false);
   };
 
-  const checkValidEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isValidEmail) {
+      setLoading(true);
+
+      const { message } = await sendFormData({ email });
+      alert(message);
+
       setEmail("");
       setIsValidEmail(false);
+      setLoading(false);
     } else {
       controls.start({
         x: 0,
@@ -53,6 +54,19 @@ function EmailForm() {
         },
       });
     }
+  };
+  const sendFormData = async (email) => {
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(email),
+    });
+    if (!response.ok) {
+      const { message } = await response.json();
+      alert(message);
+      throw new Error(message);
+    }
+    const data = await response.json();
+    return data;
   };
   return (
     <form
@@ -69,12 +83,22 @@ function EmailForm() {
       <motion.button
         animate={controls}
         className={
-          "h-full p-1 rounded-md text-xs w-20 font-RubikMedium text-neutral-50" +
+          "h-full p-1 rounded-md text-xs w-20 font-RubikMedium text-neutral-50 text-center" +
           (isValidEmail ? " bg-green-500" : " bg-[#696969]")
         }
         whileTap={{ scale: 0.9 }}
       >
-        Contact
+        {loading ? (
+          <div className="flex justify-center items-center">
+            <div
+              className={
+                "animate-spin ease-linear rounded-full border-t border-gray-200 h-4 w-4 "
+              }
+            ></div>
+          </div>
+        ) : (
+          "Contact"
+        )}
       </motion.button>
     </form>
   );

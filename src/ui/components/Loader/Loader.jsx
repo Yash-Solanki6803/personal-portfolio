@@ -1,4 +1,4 @@
-function Loader({ size = 10 }) {
+function Loader() {
   return (
     <div class="relative inline-flex">
       <div class="w-8 h-8 bg-slate-400 rounded-full"></div>
