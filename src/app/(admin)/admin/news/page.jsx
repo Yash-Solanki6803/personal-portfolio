@@ -19,18 +19,18 @@ const getBlogs = async () => {
 async function NewsGallery() {
   const { newsArticles } = await getBlogs();
   return (
-    <div className="mt-6  bg-[#1C1C1C] rounded-lg text-neutral-400">
+    <div className="bg-[#1C1C1C] rounded-lg text-neutral-400">
       {newsArticles &&
         newsArticles?.map((article) => {
           const date = formatDate(article.createdAt);
           return (
-            <div className="relative">
+            <div className="relative flex flex-col gap-4">
               <Link href={`/gallery/news/${article.slug}`} key={article.id}>
-                <div className="hover:bg-neutral-800 duration-200 transition-all ease-in p-4">
+                <div className="hover:bg-neutral-800 duration-200 transition-all ease-in py-4 pl-4 pr-28">
                   <div className="  flex items-center gap-x-3">
                     <div>
                       <span className="text-sm">{date}</span>
-                      <h2 className="text-sm font-RubikMedium">
+                      <h2 className="text-sm font-RubikMedium line-clamp-1 break-all">
                         {article.title}
                       </h2>
                     </div>

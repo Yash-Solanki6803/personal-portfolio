@@ -26,10 +26,10 @@ async function BlogGallery() {
         blogs?.map((blog) => {
           const date = formatDate(blog.createdAt);
           return (
-            <div className=" relative">
+            <div className=" relative flex flex-col gap-4 ">
               <Link href={`/gallery/blogs/${blog.slug}`} key={blog.id}>
-                <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
-                  <div className="  flex items-center gap-x-3">
+                <div className="hover:bg-neutral-800  duration-200 rounded-lg transition-all ease-in py-4 pl-4 pr-28">
+                  <div className=" flex items-center gap-x-3">
                     <Image
                       width={1000}
                       height={1000}
@@ -38,7 +38,7 @@ async function BlogGallery() {
                       alt={blog.thumbnailAlt}
                     />
                     <div>
-                      <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1">
+                      <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1 break-all">
                         {blog.title}
                       </h2>
                       <span className="text-xs">{date}</span>

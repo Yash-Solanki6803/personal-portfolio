@@ -27,9 +27,9 @@ async function ProjectGallery({ projectPage }) {
         projects?.map((project) => {
           const date = formatDate(project.createdAt);
           return (
-            <div className=" relative">
+            <div className=" relative flex flex-col gap-4 ">
               <Link href={`/gallery/projects/${project.slug}`} key={project.id}>
-                <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
+                <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in py-4 pl-4 pr-28">
                   <div className="  flex items-center gap-x-3">
                     <Image
                       width={1000}
@@ -39,7 +39,7 @@ async function ProjectGallery({ projectPage }) {
                       alt={project.thumbnailAlt}
                     />
                     <div>
-                      <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1">
+                      <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1 break-all">
                         {project.title}
                       </h2>
                       <span className="text-xs">{date}</span>
