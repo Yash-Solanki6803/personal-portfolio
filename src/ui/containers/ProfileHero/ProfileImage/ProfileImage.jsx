@@ -9,6 +9,7 @@ function ProfileImage() {
         className="w-28 h-28 rounded-full object-cover"
         src="/profile.jpg"
         alt="Image of a person wearing a green Blazers and a white shirt."
+        priority
       />
       <Spinner />
     </div>

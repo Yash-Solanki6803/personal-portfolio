@@ -25,11 +25,13 @@ async function ProjectGallery({ projectPage }) {
               <div className="hover:bg-neutral-800 duration-200 rounded-lg transition-all ease-in p-4">
                 <div className="  flex items-center gap-x-3">
                   <Image
-                    width={1000}
-                    height={1000}
+                    width={300}
+                    height={300}
                     className="w-24 h-24 object-cover rounded-md"
                     src={project.thumbnailSrc}
                     alt={project.thumbnailAlt}
+                    blurDataURL="/black.jpeg"
+                    placeholder="blur"
                   />
                   <div>
                     <h2 className="text-sm font-semibold font-RubikMedium line-clamp-1">
