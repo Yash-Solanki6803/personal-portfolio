@@ -1,4 +1,4 @@
-import { CardWrapper, Sidebar, Navlink, CustomLineBreak } from "@/ui";
+import { CardWrapper, Sidebar, NavLink, CustomLineBreak } from "@/ui";
 import Link from "next/link";
 const Leftpage = () => {
   return (
@@ -12,14 +12,14 @@ const Leftpage = () => {
             Admin Panel
           </Link>
           <CustomLineBreak />
-          <Navlink href="/gallery">Gallery</Navlink>
-          <Navlink href="/admin/blogs">Blogs</Navlink>
-          <Navlink href="/admin/projects">Projects</Navlink>
-          <Navlink href="/admin/news">News</Navlink>
+          <NavLink href="/gallery">Gallery</NavLink>
+          <NavLink href="/admin/blogs">Blogs</NavLink>
+          <NavLink href="/admin/projects">Projects</NavLink>
+          <NavLink href="/admin/news">News</NavLink>
           <CustomLineBreak />
-          <Navlink href="/admin/blogs/create">Create Blog</Navlink>
-          <Navlink href="/admin/projects/create">Add Project</Navlink>
-          <Navlink href="/admin/news/create">Publish News Article</Navlink>
+          <NavLink href="/admin/blogs/create">Create Blog</NavLink>
+          <NavLink href="/admin/projects/create">Add Project</NavLink>
+          <NavLink href="/admin/news/create">Publish News Article</NavLink>
         </div>
       </CardWrapper>
       <Sidebar>
@@ -32,13 +32,13 @@ const Leftpage = () => {
               Admin Panel
             </Link>
             <CustomLineBreak />
-            <Navlink href="/admin/blogs">Blogs</Navlink>
-            <Navlink href="/admin/projects">Projects</Navlink>
-            <Navlink href="/admin/news">News</Navlink>
+            <NavLink href="/admin/blogs">Blogs</NavLink>
+            <NavLink href="/admin/projects">Projects</NavLink>
+            <NavLink href="/admin/news">News</NavLink>
             <CustomLineBreak />
-            <Navlink href="/admin/blogs/create">Create Blog</Navlink>
-            <Navlink href="/admin/projects/create">Add Project</Navlink>
-            <Navlink href="/admin/news/create">Publish News Article</Navlink>
+            <NavLink href="/admin/blogs/create">Create Blog</NavLink>
+            <NavLink href="/admin/projects/create">Add Project</NavLink>
+            <NavLink href="/admin/news/create">Publish News Article</NavLink>
           </div>
         </CardWrapper>
       </Sidebar>

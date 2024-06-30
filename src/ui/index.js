@@ -11,7 +11,7 @@ export { default as CustomImage } from "./components/CustomImage/CustomImage";
 export { default as Loader } from "./components/Loader/Loader";
 export { default as Pagination } from "./components/Pagination/Pagination";
 export { default as Tooltip } from "./components/Tooltip/Tooltip";
-export { default as Navlink } from "./components/Admin/Navlink/Navlink";
+export { default as NavLink } from "./components/Admin/NavLink/NavLink";
 export { default as CustomLineBreak } from "./components/CustomLineBreak/CustomLineBreak";
 export { default as ResumeInput } from "./components/Admin/resumeInput/resumeInput";
 export { default as EditButton } from "./components/Admin/EditButton/EditButton";
