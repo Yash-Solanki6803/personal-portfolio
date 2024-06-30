@@ -34,7 +34,7 @@ async function page({ params }) {
   return (
     <CardWrapper customDelay={0.2} className=" text-neutral-50 w-full">
       {/* Navbar */}
-      <div className="sticky top-5 z-50">
+      <div className="sticky top-5 z-40">
         <div className=" ">
           <div className="-mt-6   ">
             <div className="bg-neutral-700/25 backdrop-blur-md h-10  w-full rounded-xl flex items-center gap-x-7 ">
@@ -59,14 +59,19 @@ async function page({ params }) {
       {/* Blog Content */}
       <div className="  mt-9 w-full p-5 border border-neutral-700   rounded-2xl h-full bg-[#1C1C1C] ">
         <AnimatedH1>{title}</AnimatedH1>
-        <div className="flex items-center gap-x-2 justify-center my-4 font-RubikRegular">
-          <span className="text-xs">Written by Yash Solanki</span>
-          <div className="w-1 h-1 rounded-full bg-neutral-400" />
-          <span className="text-xs">{time}</span>
+        <div className="flex flex-col  items-center gap-2 justify-center my-4 font-RubikRegular">
+          <div className="flex flex-col md:flex-row items-center gap-2 justify-center ">
+            <span className="text-xs text-center">Written by Yash Solanki</span>
+            <div className="w-1 h-1 rounded-full bg-neutral-400" />
+            <span className="text-xs text-center">{time}</span>
+          </div>
           {Tags?.length > 0 && (
-            <div className="flex justify-center gap-2">
-              {Tags.map((tag) => (
-                <span className="bg-neutral-800 px-2 py-1 rounded-md text-xs">
+            <div className="flex justify-center gap-2  flex-wrap">
+              {Tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="bg-neutral-800 px-2 py-1 rounded-md text-xs flex items-center justify-center"
+                >
                   {tag.title}
                 </span>
               ))}
