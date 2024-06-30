@@ -1,4 +1,5 @@
 import prisma from "@/utils/connect";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
@@ -30,6 +31,9 @@ export const PUT = async (req, { params }) => {
       where: { slug },
       data: data,
     });
+    if (newsArticle) {
+      revalidatePath(`/gallery/news/${slug}`);
+    }
     return new NextResponse(
       JSON.stringify(
         { newsArticle, message: "Successfully Updated" },
@@ -50,6 +54,9 @@ export const DELETE = async (req, { params }) => {
     const newsArticle = await prisma.newsArticle.delete({
       where: { slug },
     });
+    if (newsArticle) {
+      revalidatePath(`/`);
+    }
     return new NextResponse(
       JSON.stringify(
         { newsArticle, message: "Successfully Deleted Article" },

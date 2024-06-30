@@ -1,4 +1,5 @@
 import prisma from "@/utils/connect";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -50,6 +51,9 @@ export const POST = async (req) => {
         slug,
       },
     });
+    if (response) {
+      revalidatePath(`/gallery`);
+    }
     return new NextResponse(
       JSON.stringify(
         {

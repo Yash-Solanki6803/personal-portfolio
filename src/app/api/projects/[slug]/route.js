@@ -1,4 +1,5 @@
 import prisma from "@/utils/connect";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -94,6 +95,9 @@ export const PUT = async (req, { params }) => {
         },
       },
     });
+    if (project) {
+      revalidatePath(`/gallery/projects/${slug}`);
+    }
     return new NextResponse(
       JSON.stringify(
         {
@@ -133,6 +137,7 @@ export const DELETE = async (req, { params }) => {
         slug,
       },
     });
+    revalidatePath(`/gallery`);
     return new NextResponse(
       JSON.stringify({
         message: "Project Deleted Successfully",

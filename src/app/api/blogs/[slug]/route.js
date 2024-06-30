@@ -1,4 +1,5 @@
 import prisma from "@/utils/connect";
+import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
@@ -41,6 +42,9 @@ export const PUT = async (req, { params }) => {
       where: { slug },
       data: data,
     });
+    if (blog) {
+      revalidatePath(`/gallery/blogs/${slug}`);
+    }
     return new NextResponse(
       JSON.stringify({ blog, message: "Successfully Updated" }, { status: 200 })
     );
@@ -58,6 +62,9 @@ export const DELETE = async (req, { params }) => {
     const blog = await prisma.blog.delete({
       where: { slug },
     });
+    if (blog) {
+      revalidatePath(`/gallery`);
+    }
     return new NextResponse(
       JSON.stringify({ blog, message: "Successfully Deleted" }, { status: 200 })
     );

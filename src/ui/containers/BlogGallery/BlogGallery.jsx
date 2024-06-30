@@ -3,7 +3,7 @@ import Link from "next/link";
 import Pagination from "../../components/Pagination/Pagination";
 import { formatDate } from "@/utils";
 
-export const revalidate = 3600;
+export const revalidate = 60 * 60 * 24; // 24 hours
 
 const getBlogs = async (blogPage = 1) => {
   const res = await fetch(
