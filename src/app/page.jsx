@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { PiHouseLight, PiGithubLogoLight } from "react-icons/pi";
+import { RiGalleryView2 } from "react-icons/ri";
 import { ToggleFullScreen } from "@/ui";
 
 export default function Home() {
@@ -28,13 +29,15 @@ export default function Home() {
 
       <div className="flex relative border border-neutral-600 rounded-lg p-2 gap-x-5 text-neutral-500">
         <Link href={"/gallery"}>
-          <span>
-            <PiHouseLight className="text-2xl" />
+          <span className=" flex flex-col px-4 justify-center items-center border-b border-transparent hover:border-slate-300 transition-all duration-200">
+            <RiGalleryView2 className="text-2xl" />
+            <p>Gallery</p>
           </span>
         </Link>
         <Link href="https://github.com/Yash-Solanki6803">
-          <span>
+          <span className=" flex flex-col px-4 justify-center items-center border-b border-transparent hover:border-slate-300 transition-all duration-200">
             <PiGithubLogoLight className="text-2xl" />
+            <p>Github</p>
           </span>
         </Link>
         <ToggleFullScreen />

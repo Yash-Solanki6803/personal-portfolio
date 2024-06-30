@@ -52,7 +52,7 @@ function Pagination({ count, type = "Blogs" }) {
     <div className=" flex justify-between">
       <button
         disabled={isDisabledLeft()}
-        className="my-2 disabled:opacity-50"
+        className="my-2 disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={handleClickLeft}
       >
         <div className="bg-neutral-700/50 h-7 w-7 rounded-full flex items-center justify-center ml-3">
@@ -63,7 +63,7 @@ function Pagination({ count, type = "Blogs" }) {
       </button>
       <button
         disabled={isDisabledRight()}
-        className="my-2 disabled:opacity-50"
+        className="my-2 disabled:opacity-50 disabled:cursor-not-allowed"
         onClick={handleClickRight}
       >
         <div className="bg-neutral-700/50 h-7 w-7 rounded-full flex items-center justify-center mr-3">
