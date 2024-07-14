@@ -1,17 +1,33 @@
 import { NextResponse } from "next/server";
 import { transporter } from "@/utils/nodemailer";
+import dns from "dns";
 
 export const POST = async (req) => {
   const { email } = await req.json();
-  console.log("req", email);
-  // return new NextResponse(
-  //   JSON.stringify(
-  //     { message: "Email sent successfully!" },
-  //     {
-  //       status: 200,
-  //     }
-  //   )
+
+  const domain = email.split("@")[1];
+  console.log("Current domain: ", domain);
+
+  // dns.resolveMx(domain, (err, addresses) =>
+  //   console.log("mx records: %j", addresses)
   // );
+
+  try {
+    const addresses = await dns.promises.resolveMx(domain);
+    console.log("mx records: %j", addresses);
+  } catch (error) {
+    return new NextResponse(
+      JSON.stringify(
+        {
+          message: `Please fill all details properly! ${domain} is invalid or unreachable.`,
+        },
+        {
+          status: 400,
+        }
+      )
+    );
+  }
+
   if (!email) {
     return new NextResponse(
       JSON.stringify(
