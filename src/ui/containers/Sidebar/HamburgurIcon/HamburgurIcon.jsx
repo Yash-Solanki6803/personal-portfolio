@@ -6,7 +6,7 @@ export default function HamburIcon({ className = "", open, setOpen }) {
     <div
       id="nav-icon3"
       className={
-        "z-20 cursor-pointer block xl:hidden " +
+        "z-50 cursor-pointer block xl:hidden " +
         (open ? "open" : "") +
         " " +
         className

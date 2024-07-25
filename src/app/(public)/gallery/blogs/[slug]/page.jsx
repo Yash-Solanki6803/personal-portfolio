@@ -1,14 +1,15 @@
-import Link from "next/link";
 import ReactMarkdown from "react-markdown";
-import CustomImage from "@/ui/components/CustomImage/CustomImage";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
-import CopyIcon from "@/ui/components/CopyIcon/CopyIcon";
-import { PiArrowLeftThin } from "react-icons/pi";
 import Image from "next/image";
-import CardWrapper from "@/ui/components/CardWrapper/CardWrapper";
-import AnimatedH1 from "@/ui/components/AnimatedH1/AnimatedH1";
 import { formatDate } from "@/utils";
+import {
+  StickyNavbar,
+  CustomImage,
+  CopyIcon,
+  CardWrapper,
+  AnimatedH1,
+} from "@/ui";
 
 const getSingleBlog = async (slug) => {
   const res = await fetch(
@@ -41,27 +42,7 @@ async function page({ params }) {
   return (
     <CardWrapper customDelay={0.2} className=" text-neutral-50 w-full ">
       {/* Navbar */}
-      <div className="sticky top-5 z-50">
-        <div className=" ">
-          <div className="-mt-6   ">
-            <div className="bg-neutral-700/25 backdrop-blur-md h-10  w-full rounded-xl flex items-center gap-x-7 ">
-              <Link href={"/gallery"}>
-                <div className="bg-neutral-700/50 h-8 w-8 rounded-full flex items-center justify-center ml-3">
-                  <div className="bg-neutral-300 rounded-full h-5 w-5 flex items-center justify-center">
-                    <PiArrowLeftThin className="text-black text-lg" />
-                  </div>
-                </div>
-              </Link>
-
-              <Link href={"/"}>
-                <button className="text-xs bg-neutral-700/25 p-1 w-16 h-6 rounded-md">
-                  Home
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+      <StickyNavbar />
 
       {/* Blog Content */}
       <div className="  mt-9 w-full p-5 border border-neutral-700   rounded-2xl h-full bg-[#1C1C1C] ">

@@ -17,6 +17,7 @@ export { default as ResumeInput } from "./components/Admin/resumeInput/resumeInp
 export { default as EditButton } from "./components/Admin/EditButton/EditButton";
 export { default as DeleteButton } from "./components/Admin/DeleteButton/DeleteButton";
 export { default as ToggleFullScreen } from "./components/ToggleFullScreen/ToggleFullScreen";
+export { default as StickyNavbar } from "./components/StickyNavbar/StickyNavbar";
 
 //Containers export
 export { default as BlogGallery } from "./containers/BlogGallery/BlogGallery";
