@@ -18,9 +18,17 @@ const getSingleBlog = async (slug) => {
   return data;
 };
 
+const incrementViews = async (slug) => {
+  await fetch(`${process.env.NEXT_PUBLIC_WEB_URL}/api/blogs/${slug}`, {
+    method: "PATCH",
+    cache: "no-store", // Ensure no caching
+  });
+};
+
 async function page({ params }) {
   const { slug } = params;
   const data = await getSingleBlog(slug);
+  await incrementViews(slug);
 
   const { title, content, thumbnailSrc, thumbnailAlt, createdAt } = data;
   const time = formatDate(createdAt);

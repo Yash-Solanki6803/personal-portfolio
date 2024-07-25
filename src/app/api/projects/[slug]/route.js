@@ -5,15 +5,10 @@ import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
   const { slug } = params;
-  //fetch the Project and increment the views
+
   try {
-    const project = await prisma.project.update({
+    const project = await prisma.project.findUnique({
       where: { slug },
-      data: {
-        views: {
-          increment: 1,
-        },
-      },
       include: {
         Tags: {
           include: {
@@ -29,6 +24,27 @@ export const GET = async (req, { params }) => {
       Tags: project.Tags.map((tagOnProject) => tagOnProject.tag),
     };
     return new NextResponse(JSON.stringify(formattedProject, { status: 200 }));
+  } catch (err) {
+    console.log(err);
+    return new NextResponse(
+      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+    );
+  }
+};
+
+//Update views
+export const PATCH = async (req, { params }) => {
+  const { slug } = params;
+  try {
+    const project = await prisma.project.update({
+      where: { slug },
+      data: {
+        views: {
+          increment: 1,
+        },
+      },
+    });
+    return new NextResponse(JSON.stringify(project, { status: 200 }));
   } catch (err) {
     console.log(err);
     return new NextResponse(

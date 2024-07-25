@@ -18,9 +18,17 @@ const getSingleProject = async (slug) => {
   return data;
 };
 
+const incrementViews = async (slug) => {
+  await fetch(`${process.env.NEXT_PUBLIC_WEB_URL}/api/projects/${slug}`, {
+    method: "PATCH",
+    cache: "no-store", // Ensure no caching
+  });
+};
+
 async function page({ params }) {
   const { slug } = params;
   const data = await getSingleProject(slug);
+  await incrementViews(slug);
 
   const { title, content, thumbnailSrc, thumbnailAlt, views, Tags, createdAt } =
     data;
