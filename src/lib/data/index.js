@@ -1,6 +1,6 @@
 const data = {
   resumeLink:
-    "https://drive.google.com/file/d/1cjXihD9Zb5J-ZtwGZWn_xouXwQzQk3uJ/view?usp=drive_link",
+    "https://drive.google.com/file/d/1oT_cF3fWQZdC5AiyXl3gdUTR3TSaw3nM/view?usp=drive_link",
   discordLink: "https://discord.gg/K4CDqRdDE8",
   socialLinks: {
     github: "https://github.com/Yash-Solanki6803",
