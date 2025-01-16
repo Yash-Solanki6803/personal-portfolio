@@ -51,7 +51,7 @@ const Rightpage = () => {
                 </h3>
               </div>
               <div className="flex items-center gap-x-3 mt-6 hover:bg-neutral-800  p-2 rounded-md">
-                <div className="bg-neutral-700/50 h-8 w-8 rounded-full flex items-center justify-center">
+                <div className="bg-neutral-700/50 h-8 w-10  rounded-full flex items-center justify-center">
                   <IoGameController />
                 </div>
                 <h3 className="text-xs ">I play alot of video games as well</h3>
